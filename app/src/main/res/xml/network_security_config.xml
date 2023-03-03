@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 在开发自己的播放器的时候，发现使用http的播放地址，在9.0以上API上会报错(1,-1004)，9.0以下能正常播放 -->
+    <!-- 因为Android9.0(28)以后，系统默认不在支持http请求，
+    发送http请求会报错"No Network Security Config specified, using platform default"，并且请求网络失败 -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

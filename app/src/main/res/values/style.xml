@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="player_screen">
+        <attr name="screen_state" format="string">
+            <enum name="screen_small" value="0"/>
+            <enum name="screen_full" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

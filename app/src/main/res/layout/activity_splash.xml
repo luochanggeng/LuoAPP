@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash_bg"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/ll_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/px_200"
+        android:orientation="vertical">
+
+        <com.luo.app.widget.CircleImageView
+            android:layout_width="@dimen/px_300"
+            android:layout_height="@dimen/px_300"
+            android:src="@mipmap/head"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/px_50"
+            android:layout_gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/px_40"
+            android:text="公子赓"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/px_20"
+        android:textColor="@color/white_aa"
+        android:textSize="@dimen/px_28"
+        android:text="@string/copyright" />
+
+</RelativeLayout>
