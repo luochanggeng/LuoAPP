@@ -6,7 +6,6 @@ import com.luo.app.network.resultBean.Password;
 
 import org.json.JSONObject;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -15,6 +14,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * desc :
@@ -93,8 +93,9 @@ public class NetWorkUtil {
             Response response = call.execute();
             Password password = null;
             if (response.isSuccessful()) {
-                if (null != response.body()) {
-                    String result = response.body().string();
+                ResponseBody body = response.body();
+                if (null != body) {
+                    String result = body.string();
                     password = gson.fromJson(result, Password.class);
                 }
             }
@@ -116,8 +117,9 @@ public class NetWorkUtil {
             Response response = call.execute();
             FolderInfo folderInfo = null;
             if (response.isSuccessful()) {
-                if (null != response.body()) {
-                    String result = response.body().string();
+                ResponseBody body = response.body();
+                if (null != body) {
+                    String result = body.string();
                     folderInfo = gson.fromJson(result, FolderInfo.class);
                 }
             }
@@ -142,8 +144,9 @@ public class NetWorkUtil {
             Response response = call.execute();
             String result = null;
             if (response.isSuccessful()) {
-                if (null != response.body()) {
-                    result = Objects.requireNonNull(response.body()).string();
+                ResponseBody responseBody = response.body();
+                if (null != responseBody) {
+                    result = responseBody.string();
                 }
             }
             return result;

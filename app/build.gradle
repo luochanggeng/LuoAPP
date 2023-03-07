@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
 }
+// Android studio 引入kotlin插件，第三步 在app的build.gradle文件中将kotlin插件编译进来
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
@@ -34,8 +36,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'com.google.android.material:material:1.2.1'
+    // Android studio 引入kotlin插件，第三步 在app的build.gradle文件中将kotlin插件编译进来
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     //Glide从4.9.0版本之后支持Androidx
     implementation 'com.github.bumptech.glide:glide:4.13.0'
 

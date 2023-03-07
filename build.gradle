@@ -1,11 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    // Android studio 引入kotlin插件，第一步指定kotlin插件版本
+    ext.kotlin_version = "1.5.31"
+
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.0"
+
+        // Android studio 引入kotlin插件，第二步指定kotlin路径
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        /*
+         * Note:Luo
+         * Android kotlin 扩展插件
+         * 很好用的解决大量枯燥无意义的 findViewById 代码的书写
+         * 虽然也有诸如ButterKnife的第三方库对findViewById进行简化，但还是要通过注解来让控件与资源id之间进行绑定，并不算非常方便
+         * 而kotlin-android-extensions插件的出现则让我们可以不用再编写烦琐的findViewById代码，直接调用该控件在xml中定义的id名称
+         * 然而，它被废弃了。Google明确地告诉我们，kotlin-android-extensions插件已被废弃，现在推荐使用ViewBinding来进行替代
+         *
+         * 通过点击Android Studio顶部导航栏的Tools -> Kotlin -> Show Kotlin Bytecode来查看这段代码对应的Kotlin字节码，
+         * 然后在弹出窗口中点击Decompile按钮将字节码反编译成Java代码
+         * 实际上kotlin-android-extensions插件会帮我们生成一个_$_findCachedViewById()函数，然后通过创建HashMap缓存资源id参数和对应的控件实例
+         * 这样显然增加了内存开支，而且对于开发者来说全程黑盒
+         */
+        //classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
