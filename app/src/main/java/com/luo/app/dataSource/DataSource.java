@@ -1,6 +1,7 @@
 package com.luo.app.dataSource;
 
 import com.luo.app.network.NetWorkUtil;
+import com.luo.app.network.resultBean.ContentList;
 import com.luo.app.network.resultBean.FolderInfo;
 import com.luo.app.network.resultBean.Password;
 
@@ -23,5 +24,10 @@ public class DataSource implements IDataSource{
     @Override
     public FolderInfo queryFolderInfo() {
         return NetWorkUtil.getInstance().queryFolderInfo();
+    }
+
+    @Override
+    public ContentList queryContentList(String folderCode) {
+        return NetWorkUtil.getInstance().queryContentList(folderCode);
     }
 }

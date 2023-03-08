@@ -1,6 +1,9 @@
 package com.luo.app.network;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
+import com.luo.app.network.resultBean.ContentList;
 import com.luo.app.network.resultBean.FolderInfo;
 import com.luo.app.network.resultBean.Password;
 
@@ -124,6 +127,31 @@ public class NetWorkUtil {
                 }
             }
             return folderInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ContentList queryContentList(String folderCode){
+        try {
+            String url = IPAddress + folderCode + "/detailsList.json";
+            Log.i("zhang", "queryContentList url = " + url);
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .build();
+            final Call call = okHttpClient.newCall(request);
+            Response response = call.execute();
+            ContentList contentList = null;
+            if (response.isSuccessful()) {
+                ResponseBody body = response.body();
+                if (null != body) {
+                    String result = body.string();
+                    contentList = gson.fromJson(result, ContentList.class);
+                }
+            }
+            return contentList;
         } catch (Exception e) {
             e.printStackTrace();
         }

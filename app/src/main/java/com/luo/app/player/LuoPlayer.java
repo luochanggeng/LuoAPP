@@ -13,6 +13,8 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
+import com.luo.app.network.NetWorkUtil;
+
 import java.io.IOException;
 
 /**
@@ -107,7 +109,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
     }
 
     public void setDataSource(String url){
-        mPlayUrl = url ;
+        mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + url ;
         mediaPlayer.reset();
         isPrepareAsync = false;
         isPlaying = false;

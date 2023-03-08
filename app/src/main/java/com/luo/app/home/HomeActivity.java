@@ -2,15 +2,12 @@ package com.luo.app.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
@@ -116,6 +113,9 @@ public class HomeActivity extends BaseActivity implements
         updateTime();
 
         initPlayer();
+
+        presenter.queryFolderInfo();
+
     }
 
     private void initPlayer() {
@@ -146,8 +146,12 @@ public class HomeActivity extends BaseActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.queryFolderInfo();
-        luoPlayer.setDataSource("");
+        presenter.querySmallWindowVideo();
+    }
+
+    @Override
+    public void showSmallWindowVideo(String url) {
+        luoPlayer.setDataSource(url);
     }
 
     @Override

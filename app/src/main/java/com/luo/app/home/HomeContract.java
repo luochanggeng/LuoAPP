@@ -14,11 +14,15 @@ public class HomeContract {
 
         void showFolderInfo(FolderInfo folderInfo);
 
+        void showSmallWindowVideo(String url);
+
     }
 
     interface IHomePresenter extends IBasePresenter {
 
         void queryFolderInfo();
+
+        void querySmallWindowVideo();
 
     }
 
