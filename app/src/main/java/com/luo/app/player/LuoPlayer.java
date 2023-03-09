@@ -34,7 +34,9 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     private static final int MESSAGE_UPDATE_PROGRESS = 0x04;
 
-    private ILuoPlayerListener luoPlayerListener ;
+    private LuoPlayerScreen luoPlayerScreen ;
+
+    private ILuoPlayerListener mLuoPlayerListener;
 
     private MediaPlayer mediaPlayer;
 
@@ -55,27 +57,30 @@ public class LuoPlayer implements SurfaceHolder.Callback,
         switch (msg.what){
             case MESSAGE_PLAY_SUCCESS:
                 //播放成功
-                if(luoPlayerListener != null){
-                    luoPlayerListener.onPlaySuccess();
+                if(luoPlayerScreen != null){
+                    luoPlayerScreen.onPlaySuccess();
                 }
                 break;
             case MESSAGE_UPDATE_PROGRESS:
-                if(luoPlayerListener != null){
-                    luoPlayerListener.upDateProgress(getPlayerPosition(), getPlayerDuration());
+                if(luoPlayerScreen != null){
+                    luoPlayerScreen.upDateProgress(getPlayerPosition(), getPlayerDuration());
                 }
                 if(isPlaying){
                     mUIHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PROGRESS, 1000);
                 }
                 break;
             case MESSAGE_PLAY_ERROR:
-                if(luoPlayerListener != null){
-                    luoPlayerListener.onPlayError(msg.arg1, msg.arg2);
+                if(luoPlayerScreen != null){
+                    luoPlayerScreen.onPlayError(msg.arg1, msg.arg2);
                 }
                 break;
             case MESSAGE_PLAY_COMPLETE:
                 //播放完成
-                if(luoPlayerListener != null){
-                    luoPlayerListener.onPlayComplete();
+                if(luoPlayerScreen != null){
+                    boolean b = luoPlayerScreen.onPlayComplete();
+                    if(b && mLuoPlayerListener != null){
+                        mLuoPlayerListener.onPlayComplete();
+                    }
                 }
                 break;
             default:
@@ -98,7 +103,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
     }
 
     public void setScreenView(@NonNull LuoPlayerScreen screen){
-        luoPlayerListener = screen;
+        luoPlayerScreen = screen;
 
         SurfaceView surfaceView = new SurfaceView(screen.getContext());
         ViewGroup.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -106,6 +111,10 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
         SurfaceHolder holder = surfaceView.getHolder();
         holder.addCallback(this);
+    }
+
+    public void setLuoPlayerListener(ILuoPlayerListener luoPlayerListener){
+        mLuoPlayerListener = luoPlayerListener;
     }
 
     public void setDataSource(String url){

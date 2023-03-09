@@ -6,4 +6,7 @@
     <color name="white_44">#22FFFFFF</color>
     <color name="white_aa">#aaFFFFFF</color>
     <color name="yellow">#FFFF00</color>
+
+    <color name="small_screen_progress_end">#F4FC37</color>
+    <color name="small_screen_progress__start">#FFFDC800</color>
 </resources>

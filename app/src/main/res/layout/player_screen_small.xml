@@ -3,4 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/px_50"
+            android:layout_height="@dimen/px_50"
+            android:layout_marginEnd="@dimen/px_20"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            android:src="@mipmap/warning"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px_35"
+            android:includeFontPadding="false"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/px_35"
+            android:text="加载中..."/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_5"
+        android:layout_alignParentBottom="true"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressDrawable="@drawable/small_screen_progress"
+        android:max="100"
+        android:progress="50" />
+
 </RelativeLayout>

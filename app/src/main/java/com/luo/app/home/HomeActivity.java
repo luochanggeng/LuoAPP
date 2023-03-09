@@ -13,6 +13,7 @@ import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
 import com.luo.app.network.resultBean.Folder;
 import com.luo.app.network.resultBean.FolderInfo;
+import com.luo.app.player.ILuoPlayerListener;
 import com.luo.app.player.LuoPlayer;
 import com.luo.app.player.LuoPlayerScreen;
 import com.luo.app.setting.SettingActivity;
@@ -121,6 +122,13 @@ public class HomeActivity extends BaseActivity implements
     private void initPlayer() {
         luoPlayer = new LuoPlayer();
         luoPlayer.setScreenView(luoPlayerScreen);
+        luoPlayer.setLuoPlayerListener(new ILuoPlayerListener() {
+            @Override
+            public void onPlayComplete() {
+                //请求播放下一个资产
+                presenter.querySmallWindowVideo();
+            }
+        });
     }
 
     @Override

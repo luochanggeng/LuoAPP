@@ -21,7 +21,7 @@ import com.luo.app.R;
  * create by 公子赓
  * on 2023/2/19 13:42
  */
-public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
+public class LuoPlayerScreen extends FrameLayout{
 
     public static final String SMALL = "0";
 
@@ -34,8 +34,6 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
     private int mSmallScreenLayoutIndex;
     //小屏时候的父布局
     private ViewGroup mParentView;
-
-//    private LuoPlayer luoPlayer;
     //是否支持大小屏无缝切换，默认支持
     private boolean mSwitchScreenAvailable = true ;
 
@@ -59,17 +57,16 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
     }
 
     private void initView() {
-//        luoPlayer = new LuoPlayer(this);
-//        luoPlayer.setPlayerListener(this);
         //小窗状态的根布局
         View smallRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, this);
         //全屏状态的根布局
         View fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, this);
+        if(SMALL.equals(mScreenState)){
+            smallRootView.setVisibility(VISIBLE);
+        }else{
+            fullRootView.setVisibility(VISIBLE);
+        }
     }
-
-//    public void setDataSource(String url){
-//        luoPlayer.setDataSource(url);
-//    }
 
     public void setSwitchScreenAvailable(boolean available){
         this.mSwitchScreenAvailable = available;
@@ -84,7 +81,7 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if(event.getKeyCode() == KeyEvent.KEYCODE_BACK){
                     //切换到小屏幕的状态
-                    switchScreenToSmall(true);
+                    switchScreenToSmall();
                     return true;
                 }
                 if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN){
@@ -107,7 +104,7 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
     /**
      * 切换大小屏状态 Suspension
      */
-    public void switchScreenToSmall(boolean needResume) {
+    public void switchScreenToSmall() {
         if (!mSwitchScreenAvailable) {
             return;
         }
@@ -128,22 +125,7 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
         if (null != mParentView) {
             mParentView.addView(this, mSmallScreenLayoutIndex, mSmallScreenLayoutParams);
         }
-        //恢复到小屏状态下视频恢复播放
-//        if(needResume){
-//            luoPlayerCore.start();
-//        }
     }
-
-//    public void pause(){
-//        luoPlayer.pause();
-//    }
-
-//    public void release(){
-//        if(LuoPlayerScreen.FULL.equals(mScreenState)){
-//            switchScreenToSmall(false);
-//        }
-//        luoPlayer.release();
-//    }
 
     public void switchScreenToFull(View outFocusView) {
         if (!mSwitchScreenAvailable) {
@@ -170,22 +152,21 @@ public class LuoPlayerScreen extends FrameLayout implements ILuoPlayerListener{
         requestFocus();
     }
 
-    @Override
     public void onPlaySuccess() {
+        if(SMALL.equals(mScreenState)){
 
+        }
     }
 
-    @Override
-    public void onPlayComplete() {
+    public boolean onPlayComplete() {
 
+        return mSwitchScreenAvailable;
     }
 
-    @Override
     public void onPlayError(int what, int extra) {
 
     }
 
-    @Override
     public void upDateProgress(long currentPlayPosition, long duration) {
 
     }
