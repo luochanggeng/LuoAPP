@@ -104,7 +104,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     public void setScreenView(@NonNull LuoPlayerScreen screen){
         luoPlayerScreen = screen;
-
+        luoPlayerScreen.setLuoPlayer(this);
         SurfaceView surfaceView = new SurfaceView(screen.getContext());
         ViewGroup.LayoutParams layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         screen.addView(surfaceView, 0, layoutParams);
@@ -156,6 +156,19 @@ public class LuoPlayer implements SurfaceHolder.Callback,
         }
     }
 
+    public void resume(){
+        mediaPlayer.start();
+        isPlaying = true;
+        if(mUIHandler != null){
+            mUIHandler.removeMessages(MESSAGE_UPDATE_PROGRESS);
+            mUIHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PROGRESS, 1000);
+        }
+    }
+
+    public void seekTo(int time){
+        mediaPlayer.seekTo(time);
+    }
+
     public void release(){
         isPlaying = false;
         if(mediaPlayer != null){
@@ -167,6 +180,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
             mUIHandler.removeCallbacksAndMessages(null);
             mUIHandler = null;
         }
+        luoPlayerScreen.setLuoPlayer(null);
     }
 
     public long getPlayerPosition(){
@@ -203,7 +217,6 @@ public class LuoPlayer implements SurfaceHolder.Callback,
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         isSurfaceCreated = false;
-        pause();
         Log.i("zhang", "surfaceDestroyed");
     }
 

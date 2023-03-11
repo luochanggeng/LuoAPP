@@ -9,8 +9,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -24,11 +28,20 @@ import com.luo.app.R;
  * create by 公子赓
  * on 2023/2/19 13:42
  */
-public class LuoPlayerScreen extends FrameLayout{
+public class LuoPlayerScreen extends FrameLayout {
 
     public static final String SMALL = "0";
 
     public static final String FULL = "1";
+
+    public static final int LOADING = 0;
+
+    public static final int PLAYING = 1;
+
+    public static final int PAUSE = 2;
+
+    public static final int ERROR = 3;
+
     //屏幕状态 full:全屏  small:小窗口
     private String mScreenState;
     //保存小屏状态的layoutParams
@@ -38,15 +51,26 @@ public class LuoPlayerScreen extends FrameLayout{
     //小屏时候的父布局
     private ViewGroup mParentView;
     //是否支持大小屏无缝切换，默认支持
-    private boolean mSwitchScreenAvailable = true ;
+    private boolean mSwitchScreenAvailable = true;
 
-    private View mOutFocusView ;
+    private View mOutFocusView;
 
+    private View smallRootView;
     private ImageView smallPlayerIcon;
     private TextView smallPlayerText;
     private ProgressBar smallProgressBar;
-    private View smallRootView;
+
     private View fullRootView;
+    private ImageView fullPlayerIcon;
+    private TextView fullPlayerText;
+    private ImageView fullPauseIcon;
+    private LinearLayout fullProgressArea;
+
+    private int playerState = LOADING;
+
+    private String waringInfo;
+
+    private LuoPlayer mLuoPlayer ;
 
     public LuoPlayerScreen(@NonNull Context context) {
         this(context, null);
@@ -73,14 +97,19 @@ public class LuoPlayerScreen extends FrameLayout{
         smallProgressBar = smallRootView.findViewById(R.id.small_progress_bar);
         //全屏状态的根布局
         fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_full, this);
-        if(SMALL.equals(mScreenState)){
-            smallRootView.setVisibility(VISIBLE);
-        }else{
-            fullRootView.setVisibility(VISIBLE);
-        }
+        fullPlayerIcon = fullRootView.findViewById(R.id.full_player_icon);
+        fullPlayerText = fullRootView.findViewById(R.id.full_player_text);
+        fullPauseIcon = fullRootView.findViewById(R.id.full_pause_icon);
+        fullProgressArea = fullRootView.findViewById(R.id.full_progress_area);
+
+        updatePlayerScreenView();
     }
 
-    public void setSwitchScreenAvailable(boolean available){
+    public void setLuoPlayer(LuoPlayer luoPlayer){
+        mLuoPlayer = luoPlayer;
+    }
+
+    public void setSwitchScreenAvailable(boolean available) {
         this.mSwitchScreenAvailable = available;
     }
 
@@ -91,21 +120,34 @@ public class LuoPlayerScreen extends FrameLayout{
             return super.dispatchKeyEvent(event);
         } else {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                if(event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
                     //切换到小屏幕的状态
                     switchScreenToSmall();
                     return true;
                 }
-                if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN){
+                if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN) {
                     //调节屏幕亮度功能
                     return true;
                 }
-                if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT){
+                if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                    if(playerState == PLAYING){
+
+                    }
                     //快进快退功能
                     return true;
                 }
-                if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER){
+                if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
                     //暂停/恢复功能
+                    if(playerState == PLAYING){
+                        playerState = PAUSE ;
+                        if(mLuoPlayer != null){
+                            mLuoPlayer.pause();
+                        }
+                    }else if(playerState == PAUSE){
+                        if(mLuoPlayer != null){
+                            mLuoPlayer.resume();
+                        }
+                    }
                     return true;
                 }
             }
@@ -127,7 +169,7 @@ public class LuoPlayerScreen extends FrameLayout{
 
         clearFocus();
         setFocusable(false);
-        if(mOutFocusView != null){
+        if (mOutFocusView != null) {
             mOutFocusView.requestFocus();
         }
 
@@ -138,8 +180,7 @@ public class LuoPlayerScreen extends FrameLayout{
             mParentView.addView(this, mSmallScreenLayoutIndex, mSmallScreenLayoutParams);
         }
 
-        fullRootView.setVisibility(INVISIBLE);
-        smallRootView.setVisibility(VISIBLE);
+        updatePlayerScreenView();
     }
 
     public void switchScreenToFull(View outFocusView) {
@@ -164,47 +205,109 @@ public class LuoPlayerScreen extends FrameLayout{
         LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         decorView.addView(this, lp);
 
-        smallRootView.setVisibility(INVISIBLE);
-        fullRootView.setVisibility(VISIBLE);
+        updatePlayerScreenView();
 
         requestFocus();
     }
 
     public void onPlaySuccess() {
-        if(SMALL.equals(mScreenState)){
-            smallPlayerIcon.setVisibility(GONE);
-            smallPlayerIcon.setVisibility(GONE);
-        }
+        playerState = PLAYING;
+        updatePlayerScreenView();
     }
 
     public boolean onPlayComplete() {
-        if(SMALL.equals(mScreenState)){
-            smallPlayerIcon.setImageResource(R.mipmap.loading);
-            smallPlayerIcon.setVisibility(VISIBLE);
-            smallPlayerText.setText("加载中...");
-            smallPlayerText.setVisibility(VISIBLE);
-
-            smallProgressBar.setVisibility(GONE);
-        }
+        playerState = LOADING;
+        updatePlayerScreenView();
         return mSwitchScreenAvailable;
     }
 
     public void onPlayError(int what, int extra) {
-        if(SMALL.equals(mScreenState)){
-            smallPlayerIcon.setImageResource(R.mipmap.warning);
-            smallPlayerIcon.setVisibility(VISIBLE);
-            smallPlayerText.setText("播放异常[" + what + ", " + extra + "]");
-            smallPlayerText.setVisibility(VISIBLE);
-        }
+        playerState = ERROR;
+        waringInfo = "[Error(" + what + ", " + extra + ")]按菜单键刷新";
+        updatePlayerScreenView();
     }
 
     public void upDateProgress(long currentPlayPosition, long duration) {
-        if(SMALL.equals(mScreenState)){
-            if(smallProgressBar.getVisibility() != VISIBLE){
+        if (SMALL.equals(mScreenState)) {
+            if (smallProgressBar.getVisibility() != VISIBLE) {
                 smallProgressBar.setMax((int) duration);
                 smallProgressBar.setVisibility(VISIBLE);
             }
             smallProgressBar.setProgress((int) currentPlayPosition);
         }
+    }
+
+    private void updatePlayerScreenView(){
+        if(FULL.equals(mScreenState)){
+            smallPlayerIcon.clearAnimation();
+            smallRootView.setVisibility(INVISIBLE);
+            fullRootView.setVisibility(VISIBLE);
+        }else{
+            fullPlayerIcon.clearAnimation();
+            fullRootView.setVisibility(INVISIBLE);
+            smallRootView.setVisibility(VISIBLE);
+        }
+
+        switch (playerState){
+            case LOADING:
+                smallProgressBar.setVisibility(INVISIBLE);
+                fullPauseIcon.setVisibility(INVISIBLE);
+                fullProgressArea.setVisibility(INVISIBLE);
+
+                fullPlayerIcon.setImageResource(R.mipmap.loading);
+                fullPlayerIcon.setVisibility(VISIBLE);
+                fullPlayerText.setText("加载中...");
+                fullPlayerText.setVisibility(VISIBLE);
+
+                smallPlayerIcon.setImageResource(R.mipmap.loading);
+                smallPlayerIcon.setVisibility(VISIBLE);
+                smallPlayerText.setText("加载中...");
+                smallPlayerText.setVisibility(VISIBLE);
+
+                startAnimation(FULL.equals(mScreenState) ? fullPlayerIcon : smallPlayerIcon);
+                break;
+            case PLAYING:
+                fullPlayerIcon.setVisibility(INVISIBLE);
+                fullPlayerText.setVisibility(INVISIBLE);
+                smallPlayerIcon.setVisibility(INVISIBLE);
+                smallPlayerText.setVisibility(INVISIBLE);
+                fullPauseIcon.setVisibility(INVISIBLE);
+                fullProgressArea.setVisibility(INVISIBLE);
+                break;
+            case PAUSE:
+                fullPlayerIcon.setVisibility(INVISIBLE);
+                fullPlayerText.setVisibility(INVISIBLE);
+                smallPlayerIcon.setVisibility(INVISIBLE);
+                smallPlayerText.setVisibility(INVISIBLE);
+                fullPauseIcon.setVisibility(VISIBLE);
+                fullProgressArea.setVisibility(INVISIBLE);
+                break;
+            case ERROR:
+                smallProgressBar.setVisibility(INVISIBLE);
+                fullPauseIcon.setVisibility(INVISIBLE);
+                fullProgressArea.setVisibility(INVISIBLE);
+
+                fullPlayerIcon.setImageResource(R.mipmap.refresh);
+                fullPlayerIcon.setVisibility(VISIBLE);
+                fullPlayerText.setText(waringInfo);
+                fullPlayerText.setVisibility(VISIBLE);
+
+                smallPlayerIcon.setImageResource(R.mipmap.refresh);
+                smallPlayerIcon.setVisibility(VISIBLE);
+                smallPlayerText.setText(waringInfo);
+                smallPlayerText.setVisibility(VISIBLE);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void startAnimation(View view) {
+        RotateAnimation animation = new RotateAnimation(0f, 359f, Animation.RELATIVE_TO_SELF,
+                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setDuration(1000);
+        animation.setInterpolator(new LinearInterpolator());
+        animation.setRepeatCount(-1);
+        view.startAnimation(animation);
     }
 }

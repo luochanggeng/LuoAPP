@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,41 +26,48 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/full_pause_icon"
         android:layout_width="@dimen/px_180"
         android:layout_height="@dimen/px_180"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/px_100"
         android:layout_marginBottom="@dimen/px_80"
-        android:src="@mipmap/full_player_pause_icon"/>
+        android:src="@mipmap/full_player_pause_icon"
+        android:visibility="invisible"/>
 
     <LinearLayout
+        android:id="@+id/full_progress_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/px_220"
         android:layout_marginBottom="@dimen/px_80"
         android:layout_marginEnd="@dimen/px_220"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="invisible">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/full_video_name"
+                android:layout_width="@dimen/px_700"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/px_50"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/px_60"
-                android:text="我是电影的名称"/>
+                android:maxLines="1"
+                android:maxLength="15"
+                android:ellipsize="end"/>
 
             <TextView
+                android:id="@+id/full_video_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/px_50"
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/px_20"
-                android:text="55:55/55:55"/>
+                android:layout_marginEnd="@dimen/px_20"/>
 
         </RelativeLayout>
 
@@ -70,12 +76,13 @@
             android:layout_height="@dimen/px_40">
 
             <ImageView
+                android:id="@+id/full_progress_icon"
                 android:layout_width="@dimen/px_40"
                 android:layout_height="@dimen/px_40"
                 android:src="@mipmap/rewind" />
 
             <SeekBar
-                android:id="@+id/sb_play_progress_info"
+                android:id="@+id/full_progress_seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/px_60"
