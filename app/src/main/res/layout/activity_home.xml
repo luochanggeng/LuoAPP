@@ -127,7 +127,7 @@
         android:focusable="true"
         android:padding="@dimen/px_3">
 
-        <com.luo.app.player.LuoPlayerScreen
+        <com.luo.app.player.core.LuoPlayerScreen
             android:id="@+id/luoPlayerScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

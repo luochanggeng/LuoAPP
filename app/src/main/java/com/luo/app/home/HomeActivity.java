@@ -13,9 +13,9 @@ import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
 import com.luo.app.network.resultBean.Folder;
 import com.luo.app.network.resultBean.FolderInfo;
-import com.luo.app.player.ILuoPlayerListener;
-import com.luo.app.player.LuoPlayer;
-import com.luo.app.player.LuoPlayerScreen;
+import com.luo.app.player.core.ILuoPlayerListener;
+import com.luo.app.player.core.LuoPlayer;
+import com.luo.app.player.core.LuoPlayerScreen;
 import com.luo.app.setting.SettingActivity;
 import com.luo.app.utils.AnimationUtils;
 import com.luo.app.utils.CommonUtils;
@@ -61,6 +61,7 @@ public class HomeActivity extends BaseActivity implements
     private ImageView ivFolder6;
 
     private LuoPlayer luoPlayer;
+
     private HomeContract.IHomePresenter presenter;
 
     @Override
