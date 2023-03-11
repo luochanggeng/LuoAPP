@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:visibility="invisible">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -10,30 +11,27 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/small_player_icon"
             android:layout_width="@dimen/px_50"
             android:layout_height="@dimen/px_50"
             android:layout_marginEnd="@dimen/px_20"
-            android:scaleType="fitXY"
-            android:visibility="visible"
-            android:src="@mipmap/warning"/>
+            android:scaleType="fitXY"/>
 
         <TextView
+            android:id="@+id/small_player_text"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/px_35"
             android:includeFontPadding="false"
             android:layout_gravity="center_vertical"
-            android:textSize="@dimen/px_35"
-            android:text="加载中..."/>
+            android:textSize="@dimen/px_35"/>
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/small_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_5"
         android:layout_alignParentBottom="true"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:progressDrawable="@drawable/small_screen_progress"
-        android:max="100"
-        android:progress="50" />
+        android:progressDrawable="@drawable/small_screen_progress" />
 
 </RelativeLayout>

@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +42,12 @@ public class LuoPlayerScreen extends FrameLayout{
 
     private View mOutFocusView ;
 
+    private ImageView smallPlayerIcon;
+    private TextView smallPlayerText;
+    private ProgressBar smallProgressBar;
+    private View smallRootView;
+    private View fullRootView;
+
     public LuoPlayerScreen(@NonNull Context context) {
         this(context, null);
     }
@@ -58,9 +67,12 @@ public class LuoPlayerScreen extends FrameLayout{
 
     private void initView() {
         //小窗状态的根布局
-        View smallRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, this);
+        smallRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, this);
+        smallPlayerIcon = smallRootView.findViewById(R.id.small_player_icon);
+        smallPlayerText = smallRootView.findViewById(R.id.small_player_text);
+        smallProgressBar = smallRootView.findViewById(R.id.small_progress_bar);
         //全屏状态的根布局
-        View fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, this);
+        fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_full, this);
         if(SMALL.equals(mScreenState)){
             smallRootView.setVisibility(VISIBLE);
         }else{
@@ -125,6 +137,9 @@ public class LuoPlayerScreen extends FrameLayout{
         if (null != mParentView) {
             mParentView.addView(this, mSmallScreenLayoutIndex, mSmallScreenLayoutParams);
         }
+
+        fullRootView.setVisibility(INVISIBLE);
+        smallRootView.setVisibility(VISIBLE);
     }
 
     public void switchScreenToFull(View outFocusView) {
@@ -134,7 +149,6 @@ public class LuoPlayerScreen extends FrameLayout{
         if (FULL.equals(mScreenState)) {
             return;
         }
-
         mScreenState = FULL;
         setFocusable(true);
         mOutFocusView = outFocusView;
@@ -149,25 +163,48 @@ public class LuoPlayerScreen extends FrameLayout{
 
         LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         decorView.addView(this, lp);
+
+        smallRootView.setVisibility(INVISIBLE);
+        fullRootView.setVisibility(VISIBLE);
+
         requestFocus();
     }
 
     public void onPlaySuccess() {
         if(SMALL.equals(mScreenState)){
-
+            smallPlayerIcon.setVisibility(GONE);
+            smallPlayerIcon.setVisibility(GONE);
         }
     }
 
     public boolean onPlayComplete() {
+        if(SMALL.equals(mScreenState)){
+            smallPlayerIcon.setImageResource(R.mipmap.loading);
+            smallPlayerIcon.setVisibility(VISIBLE);
+            smallPlayerText.setText("加载中...");
+            smallPlayerText.setVisibility(VISIBLE);
 
+            smallProgressBar.setVisibility(GONE);
+        }
         return mSwitchScreenAvailable;
     }
 
     public void onPlayError(int what, int extra) {
-
+        if(SMALL.equals(mScreenState)){
+            smallPlayerIcon.setImageResource(R.mipmap.warning);
+            smallPlayerIcon.setVisibility(VISIBLE);
+            smallPlayerText.setText("播放异常[" + what + ", " + extra + "]");
+            smallPlayerText.setVisibility(VISIBLE);
+        }
     }
 
     public void upDateProgress(long currentPlayPosition, long duration) {
-
+        if(SMALL.equals(mScreenState)){
+            if(smallProgressBar.getVisibility() != VISIBLE){
+                smallProgressBar.setMax((int) duration);
+                smallProgressBar.setVisibility(VISIBLE);
+            }
+            smallProgressBar.setProgress((int) currentPlayPosition);
+        }
     }
 }
