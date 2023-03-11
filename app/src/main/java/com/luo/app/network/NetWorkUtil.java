@@ -26,7 +26,7 @@ import okhttp3.ResponseBody;
  */
 public class NetWorkUtil {
 
-    private static final String IPAddress = "";
+    private static final String IPAddress = "http://192.168.0.101:8080/luo/";
 
     /**
      * 该类的实列

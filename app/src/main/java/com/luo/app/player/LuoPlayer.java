@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -119,6 +120,8 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     public void setDataSource(String url){
         mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + url ;
+        //mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + "a/a.m3u8" ;
+        Log.i("zhang", "mPlayUrl = " + mPlayUrl);
         mediaPlayer.reset();
         isPrepareAsync = false;
         isPlaying = false;
@@ -126,7 +129,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
         if(isSurfaceCreated){
             try {
-                mediaPlayer.setDataSource(url);
+                mediaPlayer.setDataSource(mPlayUrl);
                 mediaPlayer.prepareAsync();
                 isPrepareAsync = true;
             } catch (IOException ioException) {
@@ -182,7 +185,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
         Log.i("zhang", "surfaceCreated");
         mediaPlayer.setDisplay(holder);
         isSurfaceCreated = true;
-        if(!isPrepareAsync){
+        if(!isPrepareAsync && !TextUtils.isEmpty(mPlayUrl)){
             try {
                 mediaPlayer.setDataSource(mPlayUrl);
                 mediaPlayer.prepareAsync();
@@ -203,7 +206,7 @@ public class LuoPlayer implements SurfaceHolder.Callback,
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         isSurfaceCreated = false;
-        pause();
+        //pause();
         Log.i("zhang", "surfaceDestroyed");
     }
 
