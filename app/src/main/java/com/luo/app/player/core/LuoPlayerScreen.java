@@ -1,4 +1,4 @@
-package com.luo.app.player;
+package com.luo.app.player.core;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -121,6 +121,11 @@ public class LuoPlayerScreen extends FrameLayout {
         } else {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                    if(fullProgressArea.getVisibility() == VISIBLE){
+                        //动画现实进度条区域
+                        fullProgressArea.setVisibility(INVISIBLE);
+                        return true;
+                    }
                     //切换到小屏幕的状态
                     switchScreenToSmall();
                     return true;
@@ -131,7 +136,7 @@ public class LuoPlayerScreen extends FrameLayout {
                 }
                 if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
                     if(playerState == PLAYING){
-
+                        controlProgress(event.getKeyCode());
                     }
                     //快进快退功能
                     return true;
@@ -139,12 +144,13 @@ public class LuoPlayerScreen extends FrameLayout {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
                     //暂停/恢复功能
                     if(playerState == PLAYING){
-                        playerState = PAUSE ;
                         if(mLuoPlayer != null){
+                            playerState = PAUSE ;
                             mLuoPlayer.pause();
                         }
                     }else if(playerState == PAUSE){
                         if(mLuoPlayer != null){
+                            playerState = PLAYING ;
                             mLuoPlayer.resume();
                         }
                     }
@@ -153,6 +159,15 @@ public class LuoPlayerScreen extends FrameLayout {
             }
         }
         return super.dispatchKeyEvent(event);
+    }
+
+    private void controlProgress(int keyCode) {
+        if(fullProgressArea.getVisibility() != VISIBLE){
+            //动画现实进度条区域
+            fullProgressArea.setVisibility(VISIBLE);
+        }
+
+
     }
 
     /**
@@ -164,6 +179,11 @@ public class LuoPlayerScreen extends FrameLayout {
         }
         if (SMALL.equals(mScreenState)) {
             return;
+        }
+        if(playerState == PAUSE){
+            if(mLuoPlayer != null){
+                mLuoPlayer.resume();
+            }
         }
         mScreenState = SMALL;
 

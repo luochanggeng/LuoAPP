@@ -1,4 +1,4 @@
-package com.luo.app.player;
+package com.luo.app.player.core;
 
 /**
  * desc :
