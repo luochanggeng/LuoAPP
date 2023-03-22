@@ -1,4 +1,4 @@
-package com.luo.app.splash;
+package com.luo.app.login;
 
 import com.luo.app.base.IBasePresenter;
 
@@ -7,7 +7,7 @@ import com.luo.app.base.IBasePresenter;
  * Created by luo
  * on 2023/3/2
  */
-public interface SplashContract {
+public interface LoginContract {
 
     interface ISplashView{
 

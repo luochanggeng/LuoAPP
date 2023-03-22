@@ -1,4 +1,4 @@
-package com.luo.app.splash;
+package com.luo.app.login;
 
 import android.text.TextUtils;
 
@@ -18,13 +18,13 @@ import io.reactivex.schedulers.Schedulers;
  * Created by luo
  * on 2023/3/2
  */
-public class SplashPresenter implements SplashContract.ISplashPresenter {
+public class LoginPresenter implements LoginContract.ISplashPresenter {
 
-    private SplashContract.ISplashView mView ;
+    private LoginContract.ISplashView mView ;
 
     private IDataSource dataSource ;
 
-    public SplashPresenter(SplashContract.ISplashView view) {
+    public LoginPresenter(LoginContract.ISplashView view) {
         this.mView = view;
         dataSource = new DataSource();
     }
