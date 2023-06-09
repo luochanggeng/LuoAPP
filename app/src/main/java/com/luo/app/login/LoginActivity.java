@@ -1,7 +1,13 @@
 package com.luo.app.login;
 
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
@@ -15,14 +21,35 @@ import com.luo.app.home.HomeActivity;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.ISplashView {
 
-    private LinearLayout login;
+    private EditText etInputPassword;
 
     private LoginContract.ISplashPresenter presenter ;
+
+    private String mPassWord ;
 
     @Override
     protected void initLayout() {
         setContentView(R.layout.activity_splash);
-        login = findViewById(R.id.ll_login);
+        etInputPassword = findViewById(R.id.et_input_password);
+
+        etInputPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String trim = s.toString().trim();
+                if(!TextUtils.isEmpty(mPassWord) && mPassWord.equals(trim)){
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                }else{
+                    etInputPassword.setText("");
+                }
+            }
+        });
+        etInputPassword.setOnClickListener(v ->
+                Toast.makeText(LoginActivity.this, "aaa", Toast.LENGTH_LONG).show());
+
         presenter = new LoginPresenter(this);
     }
 
@@ -30,12 +57,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.ISplash
     protected void onResume() {
         super.onResume();
         presenter.queryPassword();
-        login.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-            }
-        }, 3000);
     }
 
     @Override
@@ -46,7 +67,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ISplash
 
     @Override
     public void showPassword(String password) {
-
+        mPassWord = password;
     }
 
     @Override

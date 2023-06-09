@@ -114,17 +114,11 @@ public class HomePresenter implements HomeContract.IHomePresenter {
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<String>() {
             @Override
-            public void onSubscribe(@NonNull Disposable d) {
-            }
-
+            public void onSubscribe(@NonNull Disposable d) {}
             @Override
-            public void onComplete() {
-            }
-
+            public void onComplete() {}
             @Override
-            public void onError(@NonNull Throwable e) {
-            }
-
+            public void onError(@NonNull Throwable e) {}
             @Override
             public void onNext(@NonNull String url) {
                 if (mView != null) {

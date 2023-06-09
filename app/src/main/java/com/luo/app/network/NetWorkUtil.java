@@ -83,7 +83,7 @@ public class NetWorkUtil {
     }
 
     /**
-     * get
+     *  查询登陆密码
      */
     public Password queryPassWord() {
         try {
@@ -109,6 +109,10 @@ public class NetWorkUtil {
         return null;
     }
 
+    /**
+     * 查询栏目信息
+     * @return FolderInfo
+     */
     public FolderInfo queryFolderInfo() {
         try {
             String url = IPAddress + "folderList.json";
@@ -133,6 +137,11 @@ public class NetWorkUtil {
         return null;
     }
 
+    /**
+     * 查询栏目下内容列表信息
+     * @param folderCode 栏目码
+     * @return ContentList
+     */
     public ContentList queryContentList(String folderCode){
         try {
             String url = IPAddress + folderCode + "/detailsList.json";
@@ -158,6 +167,9 @@ public class NetWorkUtil {
         return null;
     }
 
+    /**
+     * post 请求
+     */
     public String post() {
         try {
             String url = IPAddress + "";

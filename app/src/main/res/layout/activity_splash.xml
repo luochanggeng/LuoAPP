@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/splash_bg"
@@ -11,24 +12,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/px_200"
+        android:layout_marginTop="@dimen/px_170"
         android:orientation="vertical">
 
         <com.luo.app.widget.CircleImageView
             android:layout_width="@dimen/px_300"
             android:layout_height="@dimen/px_300"
+            android:layout_gravity="center_horizontal"
             android:src="@mipmap/head"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/px_50"
-            android:layout_gravity="center_horizontal"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
+        <EditText
+            android:id="@+id/et_input_password"
+            android:layout_width="@dimen/px_380"
+            android:layout_height="@dimen/px_80"
             android:layout_marginTop="@dimen/px_40"
-            android:text="公子赓"/>
-
+            android:paddingStart="@dimen/px_20"
+            android:hint="@string/input_password_hint"
+            android:background="@drawable/ed_login_bg"
+            android:inputType="numberPassword"
+            android:textCursorDrawable="@drawable/edit_text_cursor"
+            android:textColorHighlight="@color/white" />
     </LinearLayout>
 
     <TextView
