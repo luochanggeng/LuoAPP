@@ -31,7 +31,7 @@
             android:textSize="@dimen/px_30"
             android:text="@string/login"
             android:focusable="true"
-            android:background="@drawable/setting_bg_selector" />
+            android:background="@drawable/common_text_bg_selector" />
     </LinearLayout>
 
     <LinearLayout

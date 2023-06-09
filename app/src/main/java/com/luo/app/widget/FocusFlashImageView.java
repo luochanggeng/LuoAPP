@@ -19,7 +19,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageView;
 
 import com.luo.app.R;
 
@@ -226,7 +225,7 @@ public class FocusFlashImageView extends ImageView {
      * 关闭闪光并设置透明背景,padding值重置为0
      */
     public void stopShimmer() {
-        setBackgroundResource(R.drawable.common_bg_normal);
+        setBackgroundResource(R.drawable.common_image_bg_normal);
         setPadding(0,0,0,0);
         stopAnimation();
     }
@@ -235,7 +234,7 @@ public class FocusFlashImageView extends ImageView {
      * 开启闪光并设置白色边框
      */
     public void startShimmer() {
-        setBackgroundResource(R.drawable.common_bg_focus);
+        setBackgroundResource(R.drawable.common_image_bg_focus);
         setPadding(padding,padding,padding,padding);
         invalidate();
         startAnimation();

@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/common_bg">
+    android:background="@mipmap/common_bg"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_folder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px_120"
+        android:layout_marginTop="@dimen/px_60"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px_60"
+        android:text="设置中心"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px_120"
+        android:layout_marginTop="@dimen/px_50"
+        android:includeFontPadding="false"
+        android:textColor="@color/white_aa"
+        android:text="配置IP地址"/>
+
+    <TextView
+        android:id="@+id/tv_ip_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_80"
+        android:layout_marginStart="@dimen/px_120"
+        android:layout_marginEnd="@dimen/px_120"
+        android:layout_marginTop="@dimen/px_20"
+        android:includeFontPadding="false"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/px_20"
+        android:textColor="@color/white"
+        android:background="@drawable/common_text_bg_selector"
+        android:focusable="true"
+        tools:ignore="RtlSymmetry" />
+
+</LinearLayout>

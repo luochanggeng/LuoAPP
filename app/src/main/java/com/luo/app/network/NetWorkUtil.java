@@ -1,5 +1,7 @@
 package com.luo.app.network;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -26,7 +28,7 @@ import okhttp3.ResponseBody;
  */
 public class NetWorkUtil {
 
-    private static final String IPAddress = "http://192.168.0.101:8080/luo/";
+    private static String IPAddress ;
 
     /**
      * 该类的实列
@@ -80,6 +82,10 @@ public class NetWorkUtil {
 
     public String getIPAddress(){
         return IPAddress;
+    }
+
+    public void setIpAddress(String ip){
+        IPAddress = ip;
     }
 
     /**
