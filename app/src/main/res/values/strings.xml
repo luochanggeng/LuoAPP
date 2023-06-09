@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">test</string>
     <string name="copyright">Copyright @Luo™ Power by Android</string>
-    <string name="input_password_hint">请输入密码</string>
+    <string name="login">登陆</string>
 </resources>

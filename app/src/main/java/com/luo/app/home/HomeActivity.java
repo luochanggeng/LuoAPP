@@ -41,8 +41,6 @@ public class HomeActivity extends BaseActivity implements
     private TextView tvWeek;
     //时间
     private TextView tvTime;
-    //设置按钮
-    private LinearLayout llSettingArea;
     //播放器小视频窗
     private RelativeLayout rlPlayer;
     private LuoPlayerScreen luoPlayerScreen;
@@ -74,10 +72,6 @@ public class HomeActivity extends BaseActivity implements
         tvDate = findViewById(R.id.tv_date);
         tvWeek = findViewById(R.id.tv_week);
         tvTime = findViewById(R.id.tv_time);
-
-        llSettingArea = findViewById(R.id.ll_setting_area);
-        llSettingArea.setOnFocusChangeListener(this);
-        llSettingArea.setOnClickListener(this);
 
         rlPlayer = findViewById(R.id.rl_player);
         rlPlayer.setOnFocusChangeListener(this);
@@ -166,10 +160,7 @@ public class HomeActivity extends BaseActivity implements
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if(hasFocus){
-            if(v.getId() == R.id.ll_setting_area){
-                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon_focus);
-                ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.black));
-            }else if(v.getId() == R.id.rl_player){
+            if(v.getId() == R.id.rl_player){
                 ivPlayerMask.setVisibility(View.VISIBLE);
             }else{
                 AnimationUtils.showOnFocusAnimation(v);
@@ -178,10 +169,7 @@ public class HomeActivity extends BaseActivity implements
                 }
             }
         }else{
-            if(v.getId() == R.id.ll_setting_area){
-                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon);
-                ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.white));
-            }else if(v.getId() == R.id.rl_player){
+            if(v.getId() == R.id.rl_player){
                 ivPlayerMask.setVisibility(View.INVISIBLE);
             }else {
                 AnimationUtils.showLooseFocusAnimation(v);
@@ -207,15 +195,8 @@ public class HomeActivity extends BaseActivity implements
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ll_setting_area:
-                startActivity(new Intent(this, SettingActivity.class));
-                break;
-            case R.id.rl_player:
-                luoPlayerScreen.switchScreenToFull(rlPlayer);
-                break;
-            default:
-                break;
+        if (v.getId() == R.id.rl_player) {
+            luoPlayerScreen.switchScreenToFull(rlPlayer);
         }
     }
 

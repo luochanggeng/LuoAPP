@@ -1,17 +1,16 @@
 package com.luo.app.login;
 
 import android.content.Intent;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
 import com.luo.app.home.HomeActivity;
+import com.luo.app.setting.SettingActivity;
 
 
 /**
@@ -21,7 +20,9 @@ import com.luo.app.home.HomeActivity;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.ISplashView {
 
-    private EditText etInputPassword;
+    private TextView tvLogin;
+    //设置按钮
+    private LinearLayout llSettingArea;
 
     private LoginContract.ISplashPresenter presenter ;
 
@@ -30,39 +31,45 @@ public class LoginActivity extends BaseActivity implements LoginContract.ISplash
     @Override
     protected void initLayout() {
         setContentView(R.layout.activity_splash);
-        etInputPassword = findViewById(R.id.et_input_password);
+        tvLogin = findViewById(R.id.tv_login);
+        llSettingArea = findViewById(R.id.ll_setting_area);
+        initListener();
+        presenter = new LoginPresenter(this);
+    }
 
-        etInputPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override
-            public void afterTextChanged(Editable s) {
-                String trim = s.toString().trim();
-                if(!TextUtils.isEmpty(mPassWord) && mPassWord.equals(trim)){
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                }else{
-                    etInputPassword.setText("");
-                }
+    private void initListener() {
+        tvLogin.setOnClickListener(v -> {
+            if(!TextUtils.isEmpty(mPassWord)){
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            }else{
+                Toast.makeText(LoginActivity.this, "系统关闭", Toast.LENGTH_LONG).show();
             }
         });
-        etInputPassword.setOnClickListener(v ->
-                Toast.makeText(LoginActivity.this, "aaa", Toast.LENGTH_LONG).show());
-
-        presenter = new LoginPresenter(this);
+        tvLogin.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                ((TextView)v).setTextColor(getResources().getColor(R.color.black));
+            }else{
+                ((TextView)v).setTextColor(getResources().getColor(R.color.white));
+            }
+        });
+        llSettingArea.setOnFocusChangeListener((v, hasFocus) -> {
+            if(hasFocus){
+                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon_focus);
+                ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.black));
+            }else{
+                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon);
+                ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.white));
+            }
+        });
+        llSettingArea.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, SettingActivity.class)));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         presenter.queryPassword();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
+        tvLogin.requestFocus();
     }
 
     @Override

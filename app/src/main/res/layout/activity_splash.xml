@@ -21,17 +21,49 @@
             android:layout_gravity="center_horizontal"
             android:src="@mipmap/head"/>
 
-        <EditText
-            android:id="@+id/et_input_password"
-            android:layout_width="@dimen/px_380"
-            android:layout_height="@dimen/px_80"
-            android:layout_marginTop="@dimen/px_40"
-            android:paddingStart="@dimen/px_20"
-            android:hint="@string/input_password_hint"
-            android:background="@drawable/ed_login_bg"
-            android:inputType="numberPassword"
-            android:textCursorDrawable="@drawable/edit_text_cursor"
-            android:textColorHighlight="@color/white" />
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="@dimen/px_300"
+            android:layout_height="@dimen/px_70"
+            android:layout_marginTop="@dimen/px_50"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px_30"
+            android:text="@string/login"
+            android:focusable="true"
+            android:background="@drawable/setting_bg_selector" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_setting_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/px_60"
+        android:layout_marginTop="@dimen/px_30"
+        android:background="@drawable/setting_bg_selector"
+        android:focusable="true"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/iv_setting_icon"
+            android:layout_width="@dimen/px_30"
+            android:layout_height="@dimen/px_30"
+            android:layout_marginTop="@dimen/px_5"
+            android:layout_marginBottom="@dimen/px_5"
+            android:layout_marginEnd="@dimen/px_5"
+            android:layout_marginStart="@dimen/px_10"
+            android:src="@mipmap/setting_icon" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px_25"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/px_10"
+            android:text="设置"/>
     </LinearLayout>
 
     <TextView

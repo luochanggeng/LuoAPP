@@ -55,7 +55,11 @@ public class LoginPresenter implements LoginContract.ISplashPresenter {
             public void onComplete() {}
 
             @Override
-            public void onError(@NonNull Throwable e) {}
+            public void onError(@NonNull Throwable e) {
+                if (mView != null) {
+                    mView.showPassword("");
+                }
+            }
 
             @Override
             public void onNext(@NonNull String password) {
