@@ -12,8 +12,7 @@
         android:layout_marginTop="@dimen/px_60"
         android:includeFontPadding="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/px_60"
-        android:text="栏目名称"/>
+        android:textSize="@dimen/px_60"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_folder_list"

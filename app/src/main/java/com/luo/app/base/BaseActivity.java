@@ -64,10 +64,13 @@ public abstract class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         //设置禁用软键盘
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        initIntent();
         initLayout();
     }
 
     protected abstract void initLayout();
+
+    protected void initIntent(){}
 
     protected void updateTime(){}
 

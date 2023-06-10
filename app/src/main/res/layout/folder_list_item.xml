@@ -11,6 +11,7 @@
         android:scaleType="fitXY"/>
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_100"
         android:gravity="center_vertical"
@@ -19,29 +20,29 @@
         android:layout_alignParentBottom="true"
         android:text="我是资产的名称"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px_450">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/px_450">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="标签"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="标签"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="简介"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="简介"/>-->
 
-        <com.luo.app.widget.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="@dimen/px_50"
-            android:layout_marginEnd="@dimen/px_50"
-            android:src="@mipmap/ic_launcher"/>
+<!--        <com.luo.app.widget.CircleImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginBottom="@dimen/px_50"-->
+<!--            android:layout_marginEnd="@dimen/px_50"-->
+<!--            android:src="@mipmap/ic_launcher"/>-->
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
 </RelativeLayout>

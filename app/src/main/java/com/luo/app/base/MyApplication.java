@@ -21,7 +21,7 @@ public class MyApplication extends Application {
 
     private void initNetWork() {
         SharedPreferences loader = getSharedPreferences("loader", Context.MODE_PRIVATE);
-        String ip = loader.getString("IP", "");
+        String ip = loader.getString("IP", "http://192.168.0.101:8080/luo/");
         NetWorkUtil.getInstance().setIpAddress(ip);
     }
 

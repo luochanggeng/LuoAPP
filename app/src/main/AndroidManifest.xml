@@ -27,6 +27,10 @@
 
         <activity android:name=".setting.SettingActivity"/>
 
+        <activity android:name=".list.ListActivity"/>
+
+        <activity android:name=".player.FullScreenPlayerActivity"/>
+
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
+import com.luo.app.list.ListActivity;
 import com.luo.app.network.resultBean.Folder;
 import com.luo.app.network.resultBean.FolderInfo;
 import com.luo.app.player.core.ILuoPlayerListener;
@@ -61,6 +62,8 @@ public class HomeActivity extends BaseActivity implements
     private LuoPlayer luoPlayer;
 
     private HomeContract.IHomePresenter presenter;
+
+    private int resumeCount = 0 ;
 
     @Override
     protected void initLayout() {
@@ -149,7 +152,12 @@ public class HomeActivity extends BaseActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.querySmallWindowVideo();
+        if(resumeCount <= 0){
+            presenter.querySmallWindowVideo();
+        }else{
+            luoPlayer.resume();
+        }
+        resumeCount ++ ;
     }
 
     @Override
@@ -183,7 +191,7 @@ public class HomeActivity extends BaseActivity implements
     @Override
     protected void onPause() {
         super.onPause();
-        luoPlayer.release();
+        luoPlayer.pause();
     }
 
     @Override
@@ -197,6 +205,14 @@ public class HomeActivity extends BaseActivity implements
     public void onClick(View v) {
         if (v.getId() == R.id.rl_player) {
             luoPlayerScreen.switchScreenToFull(rlPlayer);
+        } else {
+            Folder folder = (Folder) v.getTag();
+            if(folder != null){
+                Intent intent = new Intent(this, ListActivity.class);
+                intent.putExtra("folderCode", folder.getFolderCode());
+                intent.putExtra("folderName", folder.getFolderName());
+                startActivity(intent);
+            }
         }
     }
 
@@ -212,6 +228,12 @@ public class HomeActivity extends BaseActivity implements
         if(folderList == null || folderList.isEmpty()){
             return;
         }
+        ivFolder1.setTag(folderList.get(0));
+        ivFolder2.setTag(folderList.get(1));
+        ivFolder3.setTag(folderList.get(2));
+        ivFolder4.setTag(folderList.get(3));
+        ivFolder5.setTag(folderList.get(4));
+        ivFolder6.setTag(folderList.get(5));
         ImageLoader.loadImage(this, folderList.get(0).getFolderImage(), ivFolder1, R.mipmap.default_bg);
         ImageLoader.loadImage(this, folderList.get(1).getFolderImage(), ivFolder2, R.mipmap.default_bg);
         ImageLoader.loadImage(this, folderList.get(2).getFolderImage(), ivFolder3, R.mipmap.default_bg);

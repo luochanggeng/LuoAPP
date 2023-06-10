@@ -1,7 +1,10 @@
 package com.luo.app.player;
 
+import android.os.Parcelable;
+
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
+import com.luo.app.network.resultBean.ContentDetail;
 import com.luo.app.player.core.ILuoPlayerListener;
 import com.luo.app.player.core.LuoPlayer;
 import com.luo.app.player.core.LuoPlayerScreen;
@@ -14,7 +17,16 @@ import com.luo.app.player.core.LuoPlayerScreen;
 public class FullScreenPlayerActivity extends BaseActivity {
 
     private LuoPlayer luoPlayer;
+
     private LuoPlayerScreen luoPlayerScreen;
+
+    private ContentDetail contentDetail;
+
+    @Override
+    protected void initIntent() {
+        super.initIntent();
+        contentDetail = getIntent().getParcelableExtra("contentDetail");
+    }
 
     @Override
     protected void initLayout() {
@@ -36,6 +48,14 @@ public class FullScreenPlayerActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(contentDetail != null){
+            luoPlayer.setDataSource(contentDetail.getPlayUrl());
+        }
     }
 
     @Override
