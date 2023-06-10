@@ -30,7 +30,7 @@ public class ImageLoader {
                 .asBitmap()
                 .load(url)
                 .error(defaultLogo)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .skipMemoryCache(false)
                 .placeholder(defaultLogo)
                 .into(imageView);

@@ -18,8 +18,13 @@
         android:id="@+id/rv_folder_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/px_120"
-        android:layout_marginEnd="@dimen/px_120"
-        android:layout_marginTop="@dimen/px_180"/>
+        android:layout_marginStart="@dimen/px_80"
+        android:layout_marginTop="@dimen/px_150"
+        android:layout_marginEnd="@dimen/px_80"
+        android:paddingStart="@dimen/px_40"
+        android:paddingEnd="@dimen/px_40"
+        android:paddingTop="@dimen/px_30"
+        android:clipToPadding="false"
+        android:layout_marginBottom="@dimen/px_50" />
 
 </RelativeLayout>
