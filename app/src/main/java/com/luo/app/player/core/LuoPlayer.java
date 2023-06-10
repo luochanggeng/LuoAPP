@@ -160,11 +160,13 @@ public class LuoPlayer implements SurfaceHolder.Callback,
     }
 
     public void resume(){
-        mediaPlayer.start();
-        isPlaying = true;
-        if(mUIHandler != null){
-            mUIHandler.removeMessages(MESSAGE_UPDATE_PROGRESS);
-            mUIHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PROGRESS, 1000);
+        if(mediaPlayer != null){
+            mediaPlayer.start();
+            isPlaying = true;
+            if(mUIHandler != null){
+                mUIHandler.removeMessages(MESSAGE_UPDATE_PROGRESS);
+                mUIHandler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PROGRESS, 1000);
+            }
         }
     }
 

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,7 +103,7 @@ public class LuoPlayerScreen extends FrameLayout {
         fullPauseIcon = fullRootView.findViewById(R.id.full_pause_icon);
         fullProgressArea = fullRootView.findViewById(R.id.full_progress_area);
 
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
     }
 
     public void setLuoPlayer(LuoPlayer luoPlayer){
@@ -117,17 +118,21 @@ public class LuoPlayerScreen extends FrameLayout {
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (SMALL.equals(mScreenState)) {
             //小视频窗不处理按键事件
+            Log.i("zhang", "444");
             return super.dispatchKeyEvent(event);
         } else {
             if (event.getAction() == KeyEvent.ACTION_DOWN) {
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                    Log.i("zhang", "111");
                     if(fullProgressArea.getVisibility() == VISIBLE){
                         //动画现实进度条区域
                         fullProgressArea.setVisibility(INVISIBLE);
                         return true;
                     }
+                    Log.i("zhang", "222");
                     //切换到小屏幕的状态
                     switchScreenToSmall();
+                    Log.i("zhang", "333");
                     return true;
                 }
                 if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN) {
@@ -200,7 +205,7 @@ public class LuoPlayerScreen extends FrameLayout {
             mParentView.addView(this, mSmallScreenLayoutIndex, mSmallScreenLayoutParams);
         }
 
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
     }
 
     public void switchScreenToFull(View outFocusView) {
@@ -225,26 +230,26 @@ public class LuoPlayerScreen extends FrameLayout {
         LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         decorView.addView(this, lp);
 
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
 
         requestFocus();
     }
 
     public void onPlaySuccess() {
         playerState = PLAYING;
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
     }
 
     public boolean onPlayComplete() {
         playerState = LOADING;
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
         return mSwitchScreenAvailable;
     }
 
     public void onPlayError(int what, int extra) {
         playerState = ERROR;
         waringInfo = "[Error(" + what + ", " + extra + ")]按菜单键刷新";
-        updatePlayerScreenView();
+        //updatePlayerScreenView();
     }
 
     public void upDateProgress(long currentPlayPosition, long duration) {
