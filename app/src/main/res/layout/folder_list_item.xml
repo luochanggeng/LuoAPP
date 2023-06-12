@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/px_800"
-    android:layout_height="@dimen/px_450"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.luo.app.widget.FocusFlashImageView
@@ -13,12 +14,13 @@
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/px_100"
+        android:layout_height="@dimen/px_80"
         android:gravity="center_vertical"
         android:textColor="@color/white"
-        android:textSize="@dimen/px_50"
-        android:layout_alignParentBottom="true"
-        android:text="我是资产的名称"/>
+        android:textSize="@dimen/px_40"
+        android:paddingStart="@dimen/px_10"
+        android:singleLine="true"
+        tools:ignore="RtlSymmetry" />
 
 <!--    <RelativeLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -45,4 +47,4 @@
 
 <!--    </RelativeLayout>-->
 
-</RelativeLayout>
+</LinearLayout>

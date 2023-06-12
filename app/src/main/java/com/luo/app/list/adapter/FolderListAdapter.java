@@ -2,6 +2,7 @@ package com.luo.app.list.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +52,10 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull FolderListAdapter.MyViewHolder holder, int position) {
-        ContentDetail contentDetail = mContentList.get(position);
-        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.default_bg);
-        holder.tvName.setText(contentDetail.getContentName());
+//        ContentDetail contentDetail = mContentList.get(position);
+//        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.default_bg);
+//        holder.tvName.setText(contentDetail.getContentName());
+        holder.tvName.setText("我的是的法撒撒旦" + position);
     }
 
     @Override
@@ -63,7 +65,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
 
     @Override
     public int getItemCount() {
-        return mContentList == null ? 0 : mContentList.size();
+        return mContentList == null ? 37 : mContentList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -81,9 +83,16 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
                 if(b){
                     ivPlaybill.startShimmer();
                     AnimationUtils.showOnFocusAnimation(v);
+                    tvName.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    tvName.setMarqueeRepeatLimit(-1);
+                    //选中后开启跑马灯效果
+                    tvName.setSelected(true);
                 }else{
                     ivPlaybill.stopShimmer();
                     AnimationUtils.showLooseFocusAnimation(v);
+                    tvName.setEllipsize(TextUtils.TruncateAt.END);
+                    //失去焦点后取消跑马灯效果
+                    tvName.setSelected(false);
                 }
             });
 

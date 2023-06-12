@@ -12,19 +12,27 @@
         android:layout_marginTop="@dimen/px_60"
         android:includeFontPadding="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/px_60"/>
+        android:textSize="@dimen/px_60"
+        android:text="啊啊啊啊"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_folder_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/px_870"
         android:layout_marginStart="@dimen/px_80"
         android:layout_marginTop="@dimen/px_150"
-        android:layout_marginEnd="@dimen/px_80"
+        android:layout_marginEnd="@dimen/px_60"
         android:paddingStart="@dimen/px_40"
-        android:paddingEnd="@dimen/px_40"
+        android:paddingEnd="@dimen/px_60"
         android:paddingTop="@dimen/px_30"
+        android:paddingBottom="@dimen/px_10"
         android:clipToPadding="false"
-        android:layout_marginBottom="@dimen/px_50" />
+        android:fadeScrollbars="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        android:scrollbarSize="@dimen/px_4"
+        android:overScrollMode="never"
+        android:scrollbarTrackVertical="@drawable/scrollbar_track_vertical"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb_vertical"/>
 
 </RelativeLayout>
