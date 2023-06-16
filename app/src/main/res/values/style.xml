@@ -8,4 +8,15 @@
         </attr>
     </declare-styleable>
 
+    <style name="ipAddressEditDialog" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--&lt;!&ndash; 背景透明 &ndash;&gt;-->
+        <item name="android:windowBackground">@color/black_bb</item>
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
 </resources>

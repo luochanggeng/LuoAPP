@@ -18,6 +18,10 @@ public class ContentDetail implements Parcelable {
 
     private String label ;
 
+    private String area ;
+
+    private String actor ;
+
     private String desc ;
 
     private String playUrl ;
@@ -72,6 +76,22 @@ public class ContentDetail implements Parcelable {
         this.playUrl = playUrl;
     }
 
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getActor() {
+        return actor;
+    }
+
+    public void setActor(String actor) {
+        this.actor = actor;
+    }
+
     @Override
     public String toString() {
         return "ContentDetail{" +
@@ -79,6 +99,8 @@ public class ContentDetail implements Parcelable {
                 ", contentName='" + contentName + '\'' +
                 ", image='" + image + '\'' +
                 ", label='" + label + '\'' +
+                ", area='" + area + '\'' +
+                ", actor='" + actor + '\'' +
                 ", desc='" + desc + '\'' +
                 ", playUrl='" + playUrl + '\'' +
                 '}';
@@ -95,6 +117,8 @@ public class ContentDetail implements Parcelable {
         dest.writeString(this.contentName);
         dest.writeString(this.image);
         dest.writeString(this.label);
+        dest.writeString(this.area);
+        dest.writeString(this.actor);
         dest.writeString(this.desc);
         dest.writeString(this.playUrl);
     }
@@ -106,6 +130,8 @@ public class ContentDetail implements Parcelable {
         this.label = source.readString();
         this.desc = source.readString();
         this.playUrl = source.readString();
+        this.area = source.readString();
+        this.actor = source.readString();
     }
 
     protected ContentDetail(Parcel in) {
@@ -115,6 +141,8 @@ public class ContentDetail implements Parcelable {
         this.label = in.readString();
         this.desc = in.readString();
         this.playUrl = in.readString();
+        this.area = in.readString();
+        this.actor = in.readString();
     }
 
     public static final Parcelable.Creator<ContentDetail> CREATOR = new Parcelable.Creator<ContentDetail>() {
