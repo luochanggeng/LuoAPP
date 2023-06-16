@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/px_800"
     android:layout_height="wrap_content"
@@ -9,42 +9,78 @@
         android:id="@+id/iv_playbill"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_450"
-        android:scaleType="fitXY"/>
+        android:background="@mipmap/a"
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_80"
+        android:layout_below="@+id/iv_playbill"
         android:gravity="center_vertical"
-        android:textColor="@color/white"
-        android:textSize="@dimen/px_40"
         android:paddingStart="@dimen/px_10"
         android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px_40"
         tools:ignore="RtlSymmetry" />
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/px_450">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px_450"
+        android:background="@mipmap/b">
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="标签"/>-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/px_20"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="简介"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/px_20"
+                android:text="标签" />
 
-<!--        <com.luo.app.widget.CircleImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginBottom="@dimen/px_50"-->
-<!--            android:layout_marginEnd="@dimen/px_50"-->
-<!--            android:src="@mipmap/ic_launcher"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/px_20"
+                android:textSize="@dimen/px_28"
+                android:text="地区：大陆" />
 
-<!--    </RelativeLayout>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/px_20"
+                android:textSize="@dimen/px_28"
+                android:text="演员：吴京/沈腾/杰森·斯坦森" />
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/px_500"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px_28"
+                android:text="简介：而法国电视大是非观微软与肉体和国防和变成必须把先把需不需成本许昌吧续保先把宣布v被对方不行给他热议回到房间的法国海军打个电话特也让他有的风格和" />
+
+        </LinearLayout>
+
+
+
+        <com.luo.app.widget.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/px_50"
+            android:layout_marginBottom="@dimen/px_50"
+            android:src="@mipmap/ic_launcher" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
