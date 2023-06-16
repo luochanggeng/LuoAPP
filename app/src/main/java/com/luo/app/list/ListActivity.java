@@ -45,7 +45,7 @@ public class ListActivity extends BaseActivity implements ListContract.IListView
         setContentView(R.layout.activity_list);
 
         TextView tvFolderName = findViewById(R.id.tv_folder_name);
-        tvFolderName.setText("啊啊啊啊");
+        tvFolderName.setText(folderName);
 
         RecyclerView rvFolderList = findViewById(R.id.rv_folder_list);
         rvFolderList.setHasFixedSize(true);

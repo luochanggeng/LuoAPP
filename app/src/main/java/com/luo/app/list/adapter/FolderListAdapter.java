@@ -52,10 +52,9 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull FolderListAdapter.MyViewHolder holder, int position) {
-//        ContentDetail contentDetail = mContentList.get(position);
-//        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.default_bg);
-//        holder.tvName.setText(contentDetail.getContentName());
-        holder.tvName.setText("我的是的法撒撒旦" + position);
+        ContentDetail contentDetail = mContentList.get(position);
+        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.default_bg);
+        holder.tvName.setText(contentDetail.getContentName());
     }
 
     @Override
@@ -65,7 +64,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
 
     @Override
     public int getItemCount() {
-        return mContentList == null ? 37 : mContentList.size();
+        return mContentList == null ? 0 : mContentList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
