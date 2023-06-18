@@ -54,7 +54,7 @@ public class ListActivity extends BaseActivity implements ListContract.IListView
         rvFolderList.setDrawingCacheEnabled(true);
         rvFolderList.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         rvFolderList.setItemAnimator(null);
-        rvFolderList.addItemDecoration(new MyItemDecoration((int) getResources().getDimension(R.dimen.px_80), (int) getResources().getDimension(R.dimen.px_20)));
+        rvFolderList.addItemDecoration(new MyItemDecoration((int) getResources().getDimension(R.dimen.px_80), (int) getResources().getDimension(R.dimen.px_40)));
         rvFolderList.setLayoutManager(new MyGridLayoutManager(this, 2));
         rvFolderList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

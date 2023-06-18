@@ -234,13 +234,8 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
             }
         }
         String s3 = tv3.getText().toString();
-        if (!"0".equals(s3)) {
-            stringBuilder.append(s3);
-        } else {
-            if (first) {
-                stringBuilder.append(s3);
-            }
-        }
+        stringBuilder.append(s3);
+
         stringBuilder.append(".");
 
         boolean second = false;
@@ -260,13 +255,8 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
             }
         }
         String s6 = tv6.getText().toString();
-        if (!"0".equals(s6)) {
-            stringBuilder.append(s6);
-        } else {
-            if (second) {
-                stringBuilder.append(s6);
-            }
-        }
+        stringBuilder.append(s6);
+
         stringBuilder.append(".");
 
         boolean three = false;
@@ -286,13 +276,8 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
             }
         }
         String s9 = tv9.getText().toString();
-        if (!"0".equals(s9)) {
-            stringBuilder.append(s9);
-        } else {
-            if (three) {
-                stringBuilder.append(s9);
-            }
-        }
+        stringBuilder.append(s9);
+
         stringBuilder.append(".");
 
         boolean four = false;
@@ -312,13 +297,8 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
             }
         }
         String s12 = tv12.getText().toString();
-        if (!"0".equals(s12)) {
-            stringBuilder.append(s12);
-        } else {
-            if (four) {
-                stringBuilder.append(s12);
-            }
-        }
+        stringBuilder.append(s12);
+
         stringBuilder.append(":");
         String s13 = tv13.getText().toString();
         if (TextUtils.isEmpty(s13)) {

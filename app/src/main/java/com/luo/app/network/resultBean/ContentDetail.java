@@ -60,22 +60,6 @@ public class ContentDetail implements Parcelable {
         this.label = label;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getPlayUrl() {
-        return playUrl;
-    }
-
-    public void setPlayUrl(String playUrl) {
-        this.playUrl = playUrl;
-    }
-
     public String getArea() {
         return area;
     }
@@ -92,6 +76,22 @@ public class ContentDetail implements Parcelable {
         this.actor = actor;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getPlayUrl() {
+        return playUrl;
+    }
+
+    public void setPlayUrl(String playUrl) {
+        this.playUrl = playUrl;
+    }
+
     @Override
     public String toString() {
         return "ContentDetail{" +
@@ -105,6 +105,7 @@ public class ContentDetail implements Parcelable {
                 ", playUrl='" + playUrl + '\'' +
                 '}';
     }
+
 
     @Override
     public int describeContents() {
@@ -128,10 +129,10 @@ public class ContentDetail implements Parcelable {
         this.contentName = source.readString();
         this.image = source.readString();
         this.label = source.readString();
-        this.desc = source.readString();
-        this.playUrl = source.readString();
         this.area = source.readString();
         this.actor = source.readString();
+        this.desc = source.readString();
+        this.playUrl = source.readString();
     }
 
     protected ContentDetail(Parcel in) {
@@ -139,10 +140,10 @@ public class ContentDetail implements Parcelable {
         this.contentName = in.readString();
         this.image = in.readString();
         this.label = in.readString();
-        this.desc = in.readString();
-        this.playUrl = in.readString();
         this.area = in.readString();
         this.actor = in.readString();
+        this.desc = in.readString();
+        this.playUrl = in.readString();
     }
 
     public static final Parcelable.Creator<ContentDetail> CREATOR = new Parcelable.Creator<ContentDetail>() {

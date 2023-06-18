@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
+import com.luo.app.network.NetWorkUtil;
 
 /**
  * desc :
@@ -55,6 +56,7 @@ public class SettingActivity extends BaseActivity {
                         SharedPreferences.Editor edit = loader.edit();
                         edit.putString("IP", ip);
                         edit.apply();
+                        NetWorkUtil.getInstance().setIpAddress(ip);
                     }
                 });
             }

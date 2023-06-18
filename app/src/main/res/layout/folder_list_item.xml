@@ -9,7 +9,6 @@
         android:id="@+id/iv_playbill"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_450"
-        android:background="@mipmap/a"
         android:scaleType="fitXY" />
 
     <TextView
@@ -25,9 +24,16 @@
         tools:ignore="RtlSymmetry" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:id="@+id/rl_detail"
+        android:layout_width="@dimen/px_800"
         android:layout_height="@dimen/px_450"
-        android:background="@mipmap/b">
+        android:padding="@dimen/px_3"
+        android:visibility="gone">
+
+        <com.luo.app.widget.MyImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/item_detail_bg"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,50 +42,70 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_label_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/px_20"
-                android:text="标签" />
+                android:layout_marginBottom="@dimen/px_20">
+
+                <TextView
+                    android:id="@+id/tv_label1"
+                    android:layout_width="@dimen/px_90"
+                    android:layout_height="@dimen/px_40"
+                    android:background="@drawable/label1"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="@dimen/px_28" />
+
+                <TextView
+                    android:id="@+id/tv_label2"
+                    android:layout_width="@dimen/px_90"
+                    android:layout_height="@dimen/px_40"
+                    android:background="@drawable/label2"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="@dimen/px_28"
+                    android:layout_marginStart="@dimen/px_20" />
+
+                <TextView
+                    android:id="@+id/tv_label3"
+                    android:layout_width="@dimen/px_150"
+                    android:layout_height="@dimen/px_40"
+                    android:background="@drawable/label3"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="@dimen/px_28"
+                    android:layout_marginStart="@dimen/px_20"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_marginBottom="@dimen/px_20"
-                android:textSize="@dimen/px_28"
-                android:text="地区：大陆" />
+                android:textSize="@dimen/px_28" />
 
             <TextView
+                android:id="@+id/tv_actor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:layout_marginBottom="@dimen/px_20"
-                android:textSize="@dimen/px_28"
-                android:text="演员：吴京/沈腾/杰森·斯坦森" />
+                android:textSize="@dimen/px_28" />
 
             <TextView
+                android:id="@+id/tv_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxWidth="@dimen/px_500"
                 android:maxLines="4"
                 android:ellipsize="end"
                 android:textColor="@color/white"
-                android:textSize="@dimen/px_28"
-                android:text="简介：而法国电视大是非观微软与肉体和国防和变成必须把先把需不需成本许昌吧续保先把宣布v被对方不行给他热议回到房间的法国海军打个电话特也让他有的风格和" />
-
+                android:textSize="@dimen/px_28" />
         </LinearLayout>
-
-
-
-        <com.luo.app.widget.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="@dimen/px_50"
-            android:layout_marginBottom="@dimen/px_50"
-            android:src="@mipmap/ic_launcher" />
 
     </RelativeLayout>
 
