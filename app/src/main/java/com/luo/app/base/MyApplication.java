@@ -13,10 +13,17 @@ import com.luo.app.network.NetWorkUtil;
  */
 public class MyApplication extends Application {
 
+    private static Application myApplication ;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        myApplication = this;
         initNetWork();
+    }
+
+    public static Application getInstance(){
+        return myApplication;
     }
 
     private void initNetWork() {

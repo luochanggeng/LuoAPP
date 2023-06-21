@@ -2,7 +2,12 @@ package com.luo.app.utils;
 
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.OvershootInterpolator;
+
+import com.luo.app.R;
+import com.luo.app.base.MyApplication;
 
 /**
  * desc :
@@ -31,6 +36,18 @@ public class AnimationUtils {
         propertyAnimation.translationX(0.0F);
         propertyAnimation.translationY(0.0F);
         propertyAnimation.start();
+    }
+
+    public static Animation showViewFromBottom() {
+        return android.view.animation.AnimationUtils.makeInChildBottomAnimation(MyApplication.getInstance());
+    }
+
+    public static Animation hideViewFromBottom() {
+        Animation a;
+        a = android.view.animation.AnimationUtils.loadAnimation(MyApplication.getInstance(), R.anim.slide_out_bottom);
+        a.setInterpolator(new AccelerateInterpolator());
+        a.setStartTime(android.view.animation.AnimationUtils.currentAnimationTimeMillis());
+        return a;
     }
 
 }

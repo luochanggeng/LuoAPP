@@ -120,7 +120,6 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     public void setDataSource(String url){
         mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + url ;
-        //mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + "a/a.m3u8" ;
         Log.i("zhang", "mPlayUrl = " + mPlayUrl);
         mediaPlayer.reset();
         isPrepareAsync = false;
@@ -209,8 +208,6 @@ public class LuoPlayer implements SurfaceHolder.Callback,
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-        }else{
-            start();
         }
     }
 
