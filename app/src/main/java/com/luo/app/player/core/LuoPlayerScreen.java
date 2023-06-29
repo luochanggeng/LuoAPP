@@ -4,6 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,13 +28,16 @@ import androidx.annotation.Nullable;
 
 import com.luo.app.R;
 import com.luo.app.utils.AnimationUtils;
+import com.luo.app.utils.CommonUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * desc :
  * create by 公子赓
  * on 2023/2/19 13:42
  */
-public class LuoPlayerScreen extends FrameLayout {
+public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
 
     public static final String SMALL = "0";
 
@@ -70,6 +76,9 @@ public class LuoPlayerScreen extends FrameLayout {
     private TextView fullPlayerText;
     private ImageView fullPauseIcon;
     private LinearLayout fullProgressArea;
+    private TextView fullVideoPosition;
+    private TextView fullVideoDuration;
+    private ImageView fullProgressIcon;
     private SeekBar fullProgressSeekbar;
 
     private int playerState = LOADING;
@@ -77,6 +86,14 @@ public class LuoPlayerScreen extends FrameLayout {
     private String waringInfo;
 
     private LuoPlayer mLuoPlayer ;
+
+    private long firstClickDownTime ;
+
+    private long seekPosition = 0;
+
+    private boolean isControlProgress = false;
+
+    private final Handler handler ;
 
     public LuoPlayerScreen(@NonNull Context context) {
         this(context, null);
@@ -89,6 +106,7 @@ public class LuoPlayerScreen extends FrameLayout {
     @SuppressLint("CustomViewStyleable")
     public LuoPlayerScreen(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        handler = new Handler(Looper.getMainLooper(), this);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.player_screen);
         mScreenState = typedArray.getString(R.styleable.player_screen_screen_state);
         Log.i("zhang", "mScreenState = " + mScreenState);
@@ -113,7 +131,11 @@ public class LuoPlayerScreen extends FrameLayout {
         fullPlayerIcon = fullRootView.findViewById(R.id.full_player_icon);
         fullPlayerText = fullRootView.findViewById(R.id.full_player_text);
         fullPauseIcon = fullRootView.findViewById(R.id.full_pause_icon);
+
         fullProgressArea = fullRootView.findViewById(R.id.full_progress_area);
+        fullVideoPosition = fullRootView.findViewById(R.id.full_video_position);
+        fullVideoDuration = fullRootView.findViewById(R.id.full_video_duration);
+        fullProgressIcon = fullRootView.findViewById(R.id.full_progress_icon);
         fullProgressSeekbar = fullRootView.findViewById(R.id.full_progress_seekbar);
 
         updatePlayerScreenView();
@@ -158,11 +180,7 @@ public class LuoPlayerScreen extends FrameLayout {
                 }
                 if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
                     if(fullProgressArea.getVisibility() == VISIBLE){
-                        Animation animation = AnimationUtils.hideViewFromBottom();
-                        animation.setAnimationListener(animationListener);
-                        fullProgressArea.startAnimation(animation);
-                        //动画现实进度条区域
-                        fullProgressArea.setVisibility(GONE);
+                        hideControlProgressArea(true);
                         return true;
                     }
                     //切换到小屏幕的状态
@@ -174,9 +192,8 @@ public class LuoPlayerScreen extends FrameLayout {
                     return true;
                 }
                 if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                    Log.i("zhang", "playerState = " + playerState);
                     if(playerState == PLAYING){
-                        controlProgress(event.getKeyCode());
+                        controlProgress(event);
                     }
                     //快进快退功能
                     return true;
@@ -187,7 +204,7 @@ public class LuoPlayerScreen extends FrameLayout {
                         if(mLuoPlayer != null){
                             playerState = PAUSE ;
                             mLuoPlayer.pause();
-                            fullProgressArea.setVisibility(GONE);
+                            hideControlProgressArea(false);
                             fullPauseIcon.setVisibility(VISIBLE);
                         }
                     }else if(playerState == PAUSE){
@@ -199,12 +216,33 @@ public class LuoPlayerScreen extends FrameLayout {
                     }
                     return true;
                 }
+            } else if (event.getAction() == KeyEvent.ACTION_UP) {
+                if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                    if(isControlProgress){
+                        mLuoPlayer.seekTo((int) seekPosition);
+                        isControlProgress = false ;
+                    }
+                    //快进快退功能
+                    return true;
+                }
             }
         }
         return super.dispatchKeyEvent(event);
     }
 
-    private void controlProgress(int keyCode) {
+    private void hideControlProgressArea(boolean needAnimation){
+        CommonUtils.cancelCountDownTimer();
+        if(needAnimation){
+            Animation animation = AnimationUtils.hideViewFromBottom();
+            animation.setAnimationListener(animationListener);
+            fullProgressArea.startAnimation(animation);
+        }
+        //动画现实进度条区域
+        fullProgressArea.setVisibility(GONE);
+    }
+
+    private void controlProgress(KeyEvent event) {
+        CommonUtils.startCountDownTimer(handler);
         if(fullProgressArea.getVisibility() != VISIBLE){
             Animation animation = AnimationUtils.showViewFromBottom();
             animation.setDuration(500);
@@ -212,9 +250,46 @@ public class LuoPlayerScreen extends FrameLayout {
             fullProgressArea.startAnimation(animation);
             //动画现实进度条区域
             fullProgressArea.setVisibility(VISIBLE);
+            seekPosition = mLuoPlayer.getPlayerPosition();
+        }else{
+            isControlProgress = true ;
+            if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT){
+                fullProgressIcon.setImageResource(R.mipmap.rewind);
+                seekPosition = seekPosition + calculateSkipSpeed(event);
+                if(seekPosition > mLuoPlayer.getPlayerDuration()){
+                    seekPosition = mLuoPlayer.getPlayerDuration();
+                }
+            }else{
+                fullProgressIcon.setImageResource(R.mipmap.backwind);
+                seekPosition = seekPosition - calculateSkipSpeed(event);
+                if(seekPosition < 0){
+                    seekPosition = 0;
+                }
+            }
+            fullVideoPosition.setText(CommonUtils.formatPlayerTime(seekPosition));
+            fullProgressSeekbar.setProgress((int) seekPosition);
         }
+    }
 
-
+    /**
+     * 计算快进快退的速度
+     */
+    private int calculateSkipSpeed(KeyEvent event) {
+        int step = 0;
+        long clickDuration = 0;
+        if (event.getRepeatCount() == 0) {
+            firstClickDownTime = System.currentTimeMillis();
+        } else {
+            clickDuration = System.currentTimeMillis() - firstClickDownTime;
+        }
+        if (clickDuration >= 0 && clickDuration < 1000) {
+            step = 5;
+        } else if (clickDuration >= 1000 && clickDuration < 2000) {
+            step = 15;
+        } else if (clickDuration >= 2000) {
+            step = 30;
+        }
+        return step * 1000;
     }
 
     /**
@@ -227,6 +302,7 @@ public class LuoPlayerScreen extends FrameLayout {
         if (SMALL.equals(mScreenState)) {
             return;
         }
+        isControlProgress = false;
         if(playerState == PAUSE){
             if(mLuoPlayer != null){
                 mLuoPlayer.resume();
@@ -288,7 +364,7 @@ public class LuoPlayerScreen extends FrameLayout {
 
     public void onPlayError(int what, int extra) {
         playerState = ERROR;
-        waringInfo = "[Error(" + what + ", " + extra + ")]按菜单键刷新";
+        waringInfo = "[Error(" + what + ", " + extra + ")]稍后重试";
         updatePlayerScreenView();
     }
 
@@ -299,9 +375,13 @@ public class LuoPlayerScreen extends FrameLayout {
             isInitProgressMaxValue = true;
             smallProgressBar.setMax((int) duration);
             fullProgressSeekbar.setMax((int) duration);
+            fullVideoDuration.setText(CommonUtils.formatPlayerTime(duration));
         }
-        smallProgressBar.setProgress((int) currentPlayPosition);
-        fullProgressSeekbar.setProgress((int) currentPlayPosition);
+        if(!isControlProgress){
+            smallProgressBar.setProgress((int) currentPlayPosition);
+            fullProgressSeekbar.setProgress((int) currentPlayPosition);
+            fullVideoPosition.setText(CommonUtils.formatPlayerTime(currentPlayPosition));
+        }
     }
 
     private void updatePlayerScreenView(){
@@ -319,6 +399,8 @@ public class LuoPlayerScreen extends FrameLayout {
         switch (playerState){
             case LOADING:
                 if(FULL.equals(mScreenState)){
+                    hideControlProgressArea(false);
+                    fullPauseIcon.setVisibility(GONE);
                     fullPlayerIcon.setImageResource(R.mipmap.loading);
                     fullPlayerIcon.startAnimation(getRotateAnimation());
                     fullPlayerText.setText("加载中...");
@@ -344,11 +426,13 @@ public class LuoPlayerScreen extends FrameLayout {
                 if(FULL.equals(mScreenState)){
                     fullPlayerInfo.setVisibility(GONE);
                     fullPauseIcon.setVisibility(VISIBLE);
-                    fullProgressArea.setVisibility(GONE);
+                    hideControlProgressArea(false);
                 }
                 break;
             case ERROR:
                 if(FULL.equals(mScreenState)){
+                    hideControlProgressArea(false);
+                    fullPauseIcon.setVisibility(GONE);
                     fullPlayerIcon.setImageResource(R.mipmap.refresh);
                     fullPlayerText.setText(waringInfo);
                     fullPlayerInfo.setVisibility(VISIBLE);
@@ -374,5 +458,17 @@ public class LuoPlayerScreen extends FrameLayout {
             animation.setRepeatCount(-1);
         }
         return animation;
+    }
+
+    @Override
+    public boolean handleMessage(@NonNull @NotNull Message message) {
+        if(message.what == 0){
+            if (CommonUtils.countDownSecond <= 0) {
+                hideControlProgressArea(true);
+            }else{
+                CommonUtils.countDownSecond -- ;
+            }
+        }
+        return false;
     }
 }
