@@ -12,13 +12,17 @@ android {
         applicationId "com.luo.app"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode buildVersionCode()
+        versionName "luo.demo-" + buildVersionCode()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            minifyEnabled true //是否开启混淆
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled true //是否开启混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -28,10 +32,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    /*编译输出apk重命名*/
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${variant.versionName}.apk"
+        }
+    }
 }
 
 dependencies {
-
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
@@ -46,5 +55,10 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.9'
+}
 
+static def buildVersionCode() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHH')
+    return formattedDate.toInteger()
 }
