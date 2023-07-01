@@ -160,10 +160,11 @@ public class HomeActivity extends BaseActivity implements
         if(resumeCount <= 0){
             presenter.querySmallWindowVideo();
         }else{
-            if(isSmallWindowPlaying){
-                luoPlayer.resume();
-            }else{
+            if(!TextUtils.isEmpty(curPlayingUrl)){
                 luoPlayer.setDataSource(curPlayingUrl);
+                curPlayingUrl = "";
+            }else{
+                luoPlayer.resume();
             }
         }
         resumeCount ++ ;
@@ -171,12 +172,11 @@ public class HomeActivity extends BaseActivity implements
 
     @Override
     public void showSmallWindowVideo(String url) {
-        curPlayingUrl = url;
         if(isOnPause){
+            curPlayingUrl = url;
             return;
         }
         luoPlayer.setDataSource(url);
-        isSmallWindowPlaying = true ;
     }
 
     @Override
@@ -206,9 +206,7 @@ public class HomeActivity extends BaseActivity implements
     protected void onPause() {
         super.onPause();
         isOnPause = true ;
-        if(isSmallWindowPlaying){
-            luoPlayer.pause();
-        }
+        luoPlayer.pause();
     }
 
     @Override

@@ -14,6 +14,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
+import com.luo.app.utils.ActivityStackUtils;
+
 /**
  * desc :
  * create by 公子赓
@@ -79,6 +81,7 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        ActivityStackUtils.getInstance().add(this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_TIME_TICK);
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
@@ -89,6 +92,7 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        ActivityStackUtils.getInstance().remove(this);
         unregisterReceiver(receiver);
     }
 }
