@@ -120,7 +120,6 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     public void setDataSource(String url){
         mPlayUrl = NetWorkUtil.getInstance().getIPAddress() + url ;
-        Log.i("zhang", "mPlayUrl = " + mPlayUrl);
         mediaPlayer.reset();
         isPrepareAsync = false;
         isPlaying = false;
@@ -197,7 +196,6 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        Log.i("zhang", "surfaceCreated");
         mediaPlayer.setDisplay(holder);
         isSurfaceCreated = true;
         if(!isPrepareAsync && !TextUtils.isEmpty(mPlayUrl)){
@@ -213,14 +211,12 @@ public class LuoPlayer implements SurfaceHolder.Callback,
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        Log.i("zhang", "surfaceChanged");
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         isSurfaceCreated = false;
         //pause();
-        Log.i("zhang", "surfaceDestroyed");
     }
 
     @Override

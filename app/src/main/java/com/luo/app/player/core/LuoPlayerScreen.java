@@ -109,7 +109,6 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
         handler = new Handler(Looper.getMainLooper(), this);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.player_screen);
         mScreenState = typedArray.getString(R.styleable.player_screen_screen_state);
-        Log.i("zhang", "mScreenState = " + mScreenState);
         typedArray.recycle();
         initView();
     }

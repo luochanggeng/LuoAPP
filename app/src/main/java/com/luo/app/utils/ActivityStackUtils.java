@@ -60,7 +60,6 @@ public class ActivityStackUtils implements Handler.Callback {
     public boolean handleMessage(@NonNull @NotNull Message message) {
         if(message.what == 0){
             if(activityNameList.size() <= 0){
-                Log.i("zhang", "aaaaaaaaaaaaaaaaaa");
                 for(Activity activity : activityStackList){
                     activity.finish();
                 }

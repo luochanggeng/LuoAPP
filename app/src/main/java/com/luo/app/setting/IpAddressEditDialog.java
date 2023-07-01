@@ -69,7 +69,6 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
                 String[] split = ip.split("\\.");
 
                 for (int i = 0; i < split.length; i++) {
-                    Log.i("zhang", " i = " + i);
                     String splitString = split[i];
                     if (i == split.length - 1) {
                         if (splitString.contains(":")) {
@@ -93,9 +92,6 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
                     }
                 }
             }
-        }
-        for (int i = 0; i < dataArray.length; i++) {
-            Log.i("zhang", " i = " + i + "|" + dataArray[i]);
         }
 
         String ip1 = dataArray[0];

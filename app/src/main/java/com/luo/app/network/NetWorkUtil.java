@@ -151,7 +151,6 @@ public class NetWorkUtil {
     public ContentList queryContentList(String folderCode){
         try {
             String url = IPAddress + folderCode + "/detailsList.json";
-            Log.i("zhang", "queryContentList url = " + url);
             Request request = new Request.Builder()
                     .url(url)
                     .get()
