@@ -44,9 +44,11 @@ public class ActivityStackUtils implements Handler.Callback {
     }
 
     public void add(Activity activity){
+        if(!activityNameList.contains(activity.getClass().getName())){
+            activityNameList.add(activity.getClass().getName());
+        }
         if(!activityStackList.contains(activity)){
             activityStackList.add(activity);
-            activityNameList.add(activity.getClass().getName());
         }
     }
 
