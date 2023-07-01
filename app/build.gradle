@@ -20,11 +20,11 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true //是否开启混淆
+            minifyEnabled false //是否开启混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled true //是否开启混淆
+            minifyEnabled false //是否开启混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

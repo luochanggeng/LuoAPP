@@ -13,6 +13,8 @@ public class Folder {
 
     private String folderImage ;
 
+    private String folderTitle ;
+
     public String getFolderCode() {
         return folderCode;
     }
@@ -37,12 +39,21 @@ public class Folder {
         this.folderImage = folderImage;
     }
 
+    public String getFolderTitle() {
+        return folderTitle;
+    }
+
+    public void setFolderTitle(String folderTitle) {
+        this.folderTitle = folderTitle;
+    }
+
     @Override
     public String toString() {
         return "Folder{" +
                 "folderCode='" + folderCode + '\'' +
                 ", folderName='" + folderName + '\'' +
                 ", folderImage='" + folderImage + '\'' +
+                ", folderTitle='" + folderTitle + '\'' +
                 '}';
     }
 }

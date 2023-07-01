@@ -2,6 +2,7 @@ package com.luo.app.list;
 
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.luo.app.R;
 import com.luo.app.base.BaseActivity;
 import com.luo.app.list.adapter.FolderListAdapter;
 import com.luo.app.network.resultBean.ContentDetail;
+import com.luo.app.utils.ImageLoader;
 import com.luo.app.widget.MyGridLayoutManager;
 import com.luo.app.widget.MyItemDecoration;
 
@@ -31,21 +33,22 @@ public class ListActivity extends BaseActivity implements ListContract.IListView
 
     private String folderCode;
     private String folderName;
+    private String folderTitle;
 
     private FolderListAdapter adapter;
 
     @Override
     protected void initIntent() {
         folderCode = getIntent().getStringExtra("folderCode");
-        folderName = getIntent().getStringExtra("folderName");
+        folderTitle = getIntent().getStringExtra("folderTitle");
     }
 
     @Override
     protected void initLayout() {
         setContentView(R.layout.activity_list);
 
-        TextView tvFolderName = findViewById(R.id.tv_folder_name);
-        tvFolderName.setText(folderName);
+        ImageView tvFolderName = findViewById(R.id.iv_folder_title);
+        ImageLoader.loadImage(this, folderTitle, tvFolderName, R.color.trans);
 
         RecyclerView rvFolderList = findViewById(R.id.rv_folder_list);
         rvFolderList.setHasFixedSize(true);

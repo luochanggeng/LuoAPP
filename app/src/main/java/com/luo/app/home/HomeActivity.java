@@ -64,6 +64,9 @@ public class HomeActivity extends BaseActivity implements
     private HomeContract.IHomePresenter presenter;
 
     private int resumeCount = 0 ;
+    private boolean isSmallWindowPlaying = false ;
+    private boolean isOnPause = false ;
+    private String curPlayingUrl = "";
 
     @Override
     protected void initLayout() {
@@ -114,7 +117,7 @@ public class HomeActivity extends BaseActivity implements
         initPlayer();
 
         presenter.queryFolderInfo();
-
+        isSmallWindowPlaying = false;
     }
 
     private void initPlayer() {
@@ -123,6 +126,7 @@ public class HomeActivity extends BaseActivity implements
         luoPlayer.setLuoPlayerListener(new ILuoPlayerListener() {
             @Override
             public void onPlayComplete() {
+                isSmallWindowPlaying = false;
                 //请求播放下一个资产
                 presenter.querySmallWindowVideo();
             }
@@ -152,17 +156,27 @@ public class HomeActivity extends BaseActivity implements
     @Override
     protected void onResume() {
         super.onResume();
+        isOnPause = false ;
         if(resumeCount <= 0){
             presenter.querySmallWindowVideo();
         }else{
-            luoPlayer.resume();
+            if(isSmallWindowPlaying){
+                luoPlayer.resume();
+            }else{
+                luoPlayer.setDataSource(curPlayingUrl);
+            }
         }
         resumeCount ++ ;
     }
 
     @Override
     public void showSmallWindowVideo(String url) {
+        curPlayingUrl = url;
+        if(isOnPause){
+            return;
+        }
         luoPlayer.setDataSource(url);
+        isSmallWindowPlaying = true ;
     }
 
     @Override
@@ -191,7 +205,10 @@ public class HomeActivity extends BaseActivity implements
     @Override
     protected void onPause() {
         super.onPause();
-        luoPlayer.pause();
+        isOnPause = true ;
+        if(isSmallWindowPlaying){
+            luoPlayer.pause();
+        }
     }
 
     @Override
@@ -210,7 +227,7 @@ public class HomeActivity extends BaseActivity implements
             if(folder != null){
                 Intent intent = new Intent(this, ListActivity.class);
                 intent.putExtra("folderCode", folder.getFolderCode());
-                intent.putExtra("folderName", folder.getFolderName());
+                intent.putExtra("folderTitle", folder.getFolderTitle());
                 startActivity(intent);
             }
         }

@@ -138,6 +138,9 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
         fullProgressIcon = fullRootView.findViewById(R.id.full_progress_icon);
         fullProgressSeekbar = fullRootView.findViewById(R.id.full_progress_seekbar);
 
+        if(FULL.equals(mScreenState)){
+            requestFocus();
+        }
         updatePlayerScreenView();
     }
 
@@ -183,9 +186,12 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
                         hideControlProgressArea(true);
                         return true;
                     }
-                    //切换到小屏幕的状态
-                    switchScreenToSmall();
-                    return true;
+                    if(mSwitchScreenAvailable){
+                        //切换到小屏幕的状态
+                        switchScreenToSmall();
+                        return true;
+                    }
+                    return super.dispatchKeyEvent(event);
                 }
                 if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN) {
                     //调节屏幕亮度功能
