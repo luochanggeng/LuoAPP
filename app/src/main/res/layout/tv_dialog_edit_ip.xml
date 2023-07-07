@@ -20,14 +20,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -39,7 +39,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -54,7 +54,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
 
@@ -62,7 +62,7 @@
                 android:id="@+id/tv2"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -74,7 +74,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -89,14 +89,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -108,7 +108,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -118,7 +118,7 @@
             android:layout_marginStart="@dimen/px_10"
             android:layout_marginTop="@dimen/px_150"
             android:layout_marginEnd="@dimen/px_10"
-            android:background="@drawable/dot" />
+            android:background="@drawable/tv_dot" />
 
         <LinearLayout
             android:layout_width="@dimen/px_80"
@@ -130,14 +130,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv4"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -149,7 +149,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -164,14 +164,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv5"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -183,7 +183,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -198,14 +198,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv6"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -217,7 +217,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -227,7 +227,7 @@
             android:layout_marginStart="@dimen/px_10"
             android:layout_marginTop="@dimen/px_150"
             android:layout_marginEnd="@dimen/px_10"
-            android:background="@drawable/dot" />
+            android:background="@drawable/tv_dot" />
 
         <LinearLayout
             android:layout_width="@dimen/px_80"
@@ -239,14 +239,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv7"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -258,7 +258,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -273,14 +273,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv8"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -292,7 +292,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -307,14 +307,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv9"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -326,7 +326,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -336,7 +336,7 @@
             android:layout_marginStart="@dimen/px_10"
             android:layout_marginTop="@dimen/px_150"
             android:layout_marginEnd="@dimen/px_10"
-            android:background="@drawable/dot" />
+            android:background="@drawable/tv_dot" />
 
         <LinearLayout
             android:layout_width="@dimen/px_80"
@@ -348,14 +348,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv10"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -367,7 +367,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -382,14 +382,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv11"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -401,7 +401,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -416,14 +416,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv12"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -435,7 +435,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -450,13 +450,13 @@
             <TextView
                 android:layout_width="@dimen/px_10"
                 android:layout_height="@dimen/px_10"
-                android:background="@drawable/dot" />
+                android:background="@drawable/tv_dot" />
 
             <TextView
                 android:layout_width="@dimen/px_10"
                 android:layout_height="@dimen/px_10"
                 android:layout_marginTop="@dimen/px_30"
-                android:background="@drawable/dot" />
+                android:background="@drawable/tv_dot" />
         </LinearLayout>
 
         <LinearLayout
@@ -469,14 +469,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv13"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -488,7 +488,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -503,14 +503,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv14"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -522,7 +522,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -537,14 +537,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv15"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -556,7 +556,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -571,14 +571,14 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/px_10"
-                android:src="@mipmap/arrow_up"
+                android:src="@mipmap/tv_arrow_up"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/tv16"
                 android:layout_width="@dimen/px_80"
                 android:layout_height="@dimen/px_150"
-                android:background="@drawable/common_text_bg_selector"
+                android:background="@drawable/tv_common_text_bg_selector"
                 android:focusable="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
@@ -590,7 +590,7 @@
                 android:layout_height="@dimen/px_24"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/px_10"
-                android:src="@mipmap/arrow_down"
+                android:src="@mipmap/tv_arrow_down"
                 android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>

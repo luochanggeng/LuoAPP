@@ -33,7 +33,7 @@
         <com.luo.app.tvDemo.widget.MyImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/item_detail_bg"/>
+            android:src="@mipmap/tv_item_detail_bg"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                     android:id="@+id/tv_label1"
                     android:layout_width="@dimen/px_90"
                     android:layout_height="@dimen/px_40"
-                    android:background="@drawable/label1"
+                    android:background="@drawable/tv_label1"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="@dimen/px_28" />
@@ -61,7 +61,7 @@
                     android:id="@+id/tv_label2"
                     android:layout_width="@dimen/px_90"
                     android:layout_height="@dimen/px_40"
-                    android:background="@drawable/label2"
+                    android:background="@drawable/tv_label2"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="@dimen/px_28"
@@ -71,7 +71,7 @@
                     android:id="@+id/tv_label3"
                     android:layout_width="@dimen/px_150"
                     android:layout_height="@dimen/px_40"
-                    android:background="@drawable/label3"
+                    android:background="@drawable/tv_label3"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="@dimen/px_28"

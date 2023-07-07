@@ -43,7 +43,7 @@ public class ListActivity extends BaseActivity implements ListContract.IListView
 
     @Override
     protected void initLayout() {
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.tv_activity_list);
 
         ImageView tvFolderName = findViewById(R.id.iv_folder_title);
         ImageLoader.loadImage(this, folderTitle, tvFolderName, R.color.trans);

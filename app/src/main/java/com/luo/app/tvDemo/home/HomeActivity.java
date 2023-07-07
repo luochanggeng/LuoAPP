@@ -68,7 +68,7 @@ public class HomeActivity extends BaseActivity implements
 
     @Override
     protected void initLayout() {
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.tv_activity_home);
 
         ivLogo = findViewById(R.id.iv_logo);
 
@@ -133,7 +133,7 @@ public class HomeActivity extends BaseActivity implements
 
     @Override
     protected void updateNetWorkState(boolean isHaveNetwork) {
-        ivNetState.setImageResource(isHaveNetwork ? R.mipmap.net_connect_icon : R.mipmap.net_disconnect_icon);
+        ivNetState.setImageResource(isHaveNetwork ? R.mipmap.tv_net_connect_icon : R.mipmap.tv_net_disconnect_icon);
     }
 
     @Override
@@ -247,11 +247,11 @@ public class HomeActivity extends BaseActivity implements
         ivFolder4.setTag(folderList.get(3));
         ivFolder5.setTag(folderList.get(4));
         ivFolder6.setTag(folderList.get(5));
-        ImageLoader.loadImage(this, folderList.get(0).getFolderImage(), ivFolder1, R.mipmap.default_bg);
-        ImageLoader.loadImage(this, folderList.get(1).getFolderImage(), ivFolder2, R.mipmap.default_bg);
-        ImageLoader.loadImage(this, folderList.get(2).getFolderImage(), ivFolder3, R.mipmap.default_bg);
-        ImageLoader.loadImage(this, folderList.get(3).getFolderImage(), ivFolder4, R.mipmap.default_bg);
-        ImageLoader.loadImage(this, folderList.get(4).getFolderImage(), ivFolder5, R.mipmap.default_bg);
-        ImageLoader.loadImage(this, folderList.get(5).getFolderImage(), ivFolder6, R.mipmap.default_bg);
+        ImageLoader.loadImage(this, folderList.get(0).getFolderImage(), ivFolder1, R.mipmap.tv_default_bg);
+        ImageLoader.loadImage(this, folderList.get(1).getFolderImage(), ivFolder2, R.mipmap.tv_default_bg);
+        ImageLoader.loadImage(this, folderList.get(2).getFolderImage(), ivFolder3, R.mipmap.tv_default_bg);
+        ImageLoader.loadImage(this, folderList.get(3).getFolderImage(), ivFolder4, R.mipmap.tv_default_bg);
+        ImageLoader.loadImage(this, folderList.get(4).getFolderImage(), ivFolder5, R.mipmap.tv_default_bg);
+        ImageLoader.loadImage(this, folderList.get(5).getFolderImage(), ivFolder6, R.mipmap.tv_default_bg);
     }
 }

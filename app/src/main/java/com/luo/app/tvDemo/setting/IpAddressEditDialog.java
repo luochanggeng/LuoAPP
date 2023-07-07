@@ -42,11 +42,11 @@ public class IpAddressEditDialog extends Dialog implements View.OnKeyListener, V
     private TextView tv16;
 
     public IpAddressEditDialog(@NonNull Context context) {
-        super(context, R.style.ipAddressEditDialog);
+        super(context, R.style.tv_ipAddressEditDialog);
 
         mContext = context;
 
-        View inflate = LayoutInflater.from(context).inflate(R.layout.dialog_edit_ip, null);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.tv_dialog_edit_ip, null);
         setContentView(inflate);
         initView(inflate);
     }

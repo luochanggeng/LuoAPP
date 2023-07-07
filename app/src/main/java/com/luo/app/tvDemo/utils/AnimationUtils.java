@@ -44,7 +44,7 @@ public class AnimationUtils {
 
     public static Animation hideViewFromBottom() {
         Animation a;
-        a = android.view.animation.AnimationUtils.loadAnimation(MyApplication.getInstance(), R.anim.slide_out_bottom);
+        a = android.view.animation.AnimationUtils.loadAnimation(MyApplication.getInstance(), R.anim.tv_slide_out_bottom);
         a.setInterpolator(new AccelerateInterpolator());
         a.setStartTime(android.view.animation.AnimationUtils.currentAnimationTimeMillis());
         return a;

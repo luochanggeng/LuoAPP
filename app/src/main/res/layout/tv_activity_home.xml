@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    android:background="@mipmap/common_bg">
+    android:background="@mipmap/tv_common_bg">
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -27,7 +27,7 @@
             android:layout_width="@dimen/px_52"
             android:layout_height="@dimen/px_52"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/net_disconnect_icon" />
+            android:src="@mipmap/tv_net_disconnect_icon" />
 
         <LinearLayout
             android:layout_width="@dimen/px_180"
@@ -91,7 +91,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/px_117"
         android:layout_marginTop="@dimen/px_177"
-        android:background="@drawable/small_player_bg_selector"
+        android:background="@drawable/tv_small_player_bg_selector"
         android:focusable="true"
         android:padding="@dimen/px_3">
 
@@ -99,7 +99,7 @@
             android:id="@+id/luoPlayerScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:screen_state="screen_small"
+            app:tv_screen_state="tv_screen_small"
             android:background="@color/black" />
 
         <ImageView
@@ -107,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible"
-            android:src="@mipmap/small_screen_mask"/>
+            android:src="@mipmap/tv_small_screen_mask"/>
 
     </RelativeLayout>
 

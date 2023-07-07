@@ -29,7 +29,7 @@ public class FullScreenPlayerActivity extends BaseActivity {
     @Override
     protected void initLayout() {
 
-        setContentView(R.layout.activity_full_screen_player);
+        setContentView(R.layout.tv_activity_full_screen_player);
 
         luoPlayerScreen = findViewById(R.id.luoPlayerScreen);
         luoPlayerScreen.setSwitchScreenAvailable(false);

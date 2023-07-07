@@ -33,6 +33,6 @@
         android:layout_height="@dimen/px_5"
         android:layout_alignParentBottom="true"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:progressDrawable="@drawable/small_screen_progress" />
+        android:progressDrawable="@drawable/tv_small_screen_progress" />
 
 </RelativeLayout>

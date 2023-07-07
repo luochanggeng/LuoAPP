@@ -16,8 +16,8 @@
             <shape>
                 <corners android:radius="0dp" />
                 <gradient
-                    android:endColor="@color/small_screen_progress_end"
-                    android:startColor="@color/small_screen_progress__start" />
+                    android:endColor="@color/tv_small_screen_progress_end"
+                    android:startColor="@color/tv_small_screen_progress_start" />
             </shape>
         </clip>
     </item>

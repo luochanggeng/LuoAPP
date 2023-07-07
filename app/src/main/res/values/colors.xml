@@ -8,6 +8,6 @@
     <color name="black_bb">#bb000000</color>
     <color name="yellow">#FFFF00</color>
 
-    <color name="small_screen_progress_end">#F4FC37</color>
-    <color name="small_screen_progress__start">#FFFDC800</color>
+    <color name="tv_small_screen_progress_end">#F4FC37</color>
+    <color name="tv_small_screen_progress_start">#FFFDC800</color>
 </resources>

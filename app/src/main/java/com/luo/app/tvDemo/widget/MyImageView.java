@@ -224,7 +224,7 @@ public class MyImageView extends ImageView {
      * 关闭闪光并设置透明背景,padding值重置为0
      */
     public void stopShimmer() {
-        setBackgroundResource(R.drawable.common_image_bg_normal);
+        setBackgroundResource(R.drawable.tv_common_image_bg_normal);
         setPadding(0,0,0,0);
         stopAnimation();
     }
@@ -233,7 +233,7 @@ public class MyImageView extends ImageView {
      * 开启闪光并设置白色边框
      */
     public void startShimmer() {
-        setBackgroundResource(R.drawable.common_image_bg_focus);
+        setBackgroundResource(R.drawable.tv_common_image_bg_focus);
         setPadding(padding,padding,padding,padding);
         invalidate();
         startAnimation();

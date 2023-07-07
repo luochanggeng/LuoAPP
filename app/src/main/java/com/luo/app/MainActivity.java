@@ -10,6 +10,6 @@ import com.luo.app.base.BaseActivity;
 public class MainActivity extends BaseActivity {
     @Override
     protected void initLayout() {
-
+        setContentView(R.layout.activity_mian);
     }
 }

@@ -106,15 +106,15 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
     public LuoPlayerScreen(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         handler = new Handler(Looper.getMainLooper(), this);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.player_screen);
-        mScreenState = typedArray.getString(R.styleable.player_screen_screen_state);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.tv_player_screen);
+        mScreenState = typedArray.getString(R.styleable.tv_player_screen_tv_screen_state);
         typedArray.recycle();
         initView();
     }
 
     private void initView() {
         //小窗状态的根布局
-        smallRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_small, null);
+        smallRootView = LayoutInflater.from(getContext()).inflate(R.layout.tv_player_screen_small, null);
         this.addView(smallRootView);
 
         smallPlayerInfo = smallRootView.findViewById(R.id.small_player_info);
@@ -122,7 +122,7 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
         smallPlayerText = smallRootView.findViewById(R.id.small_player_text);
         smallProgressBar = smallRootView.findViewById(R.id.small_progress_bar);
         //全屏状态的根布局
-        fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.player_screen_full, null);
+        fullRootView = LayoutInflater.from(getContext()).inflate(R.layout.tv_player_screen_full, null);
         this.addView(fullRootView);
 
         fullPlayerInfo = fullRootView.findViewById(R.id.full_player_info);
@@ -258,13 +258,13 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
         }else{
             isControlProgress = true ;
             if(event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT){
-                fullProgressIcon.setImageResource(R.mipmap.rewind);
+                fullProgressIcon.setImageResource(R.mipmap.tv_rewind);
                 seekPosition = seekPosition + calculateSkipSpeed(event);
                 if(seekPosition > mLuoPlayer.getPlayerDuration()){
                     seekPosition = mLuoPlayer.getPlayerDuration();
                 }
             }else{
-                fullProgressIcon.setImageResource(R.mipmap.backwind);
+                fullProgressIcon.setImageResource(R.mipmap.tv_backwind);
                 seekPosition = seekPosition - calculateSkipSpeed(event);
                 if(seekPosition < 0){
                     seekPosition = 0;
@@ -405,12 +405,12 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
                 if(FULL.equals(mScreenState)){
                     hideControlProgressArea(false);
                     fullPauseIcon.setVisibility(GONE);
-                    fullPlayerIcon.setImageResource(R.mipmap.loading);
+                    fullPlayerIcon.setImageResource(R.mipmap.tv_loading);
                     fullPlayerIcon.startAnimation(getRotateAnimation());
                     fullPlayerText.setText("加载中...");
                     fullPlayerInfo.setVisibility(VISIBLE);
                 }else{
-                    smallPlayerIcon.setImageResource(R.mipmap.loading);
+                    smallPlayerIcon.setImageResource(R.mipmap.tv_loading);
                     smallPlayerIcon.startAnimation(getRotateAnimation());
                     smallPlayerText.setText("加载中...");
                     smallPlayerInfo.setVisibility(VISIBLE);
@@ -437,11 +437,11 @@ public class LuoPlayerScreen extends FrameLayout implements Handler.Callback {
                 if(FULL.equals(mScreenState)){
                     hideControlProgressArea(false);
                     fullPauseIcon.setVisibility(GONE);
-                    fullPlayerIcon.setImageResource(R.mipmap.refresh);
+                    fullPlayerIcon.setImageResource(R.mipmap.tv_refresh);
                     fullPlayerText.setText(waringInfo);
                     fullPlayerInfo.setVisibility(VISIBLE);
                 }else{
-                    smallPlayerIcon.setImageResource(R.mipmap.refresh);
+                    smallPlayerIcon.setImageResource(R.mipmap.tv_refresh);
                     smallPlayerText.setText(waringInfo);
                     smallPlayerInfo.setVisibility(VISIBLE);
                 }

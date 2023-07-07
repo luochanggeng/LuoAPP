@@ -82,7 +82,7 @@ public class FocusFlashImageView extends ImageView {
         mPaint = new Paint();
         mPath = new Path();
         setScaleType(ScaleType.FIT_XY);
-        setImageResource(R.mipmap.default_bg);
+        setImageResource(R.mipmap.tv_default_bg);
         initGradientAnimator();
 
         maskPaint = new Paint();
@@ -225,7 +225,7 @@ public class FocusFlashImageView extends ImageView {
      * 关闭闪光并设置透明背景,padding值重置为0
      */
     public void stopShimmer() {
-        setBackgroundResource(R.drawable.common_image_bg_normal);
+        setBackgroundResource(R.drawable.tv_common_image_bg_normal);
         setPadding(0,0,0,0);
         stopAnimation();
     }
@@ -234,7 +234,7 @@ public class FocusFlashImageView extends ImageView {
      * 开启闪光并设置白色边框
      */
     public void startShimmer() {
-        setBackgroundResource(R.drawable.common_image_bg_focus);
+        setBackgroundResource(R.drawable.tv_common_image_bg_focus);
         setPadding(padding,padding,padding,padding);
         invalidate();
         startAnimation();

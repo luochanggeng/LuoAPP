@@ -22,7 +22,7 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void initLayout() {
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.tv_activity_setting);
         tvIpAddress = findViewById(R.id.tv_ip_address);
         setListener();
 

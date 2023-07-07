@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/common_bg">
+    android:background="@mipmap/tv_common_bg">
 
     <ImageView
         android:id="@+id/iv_folder_title"
@@ -28,7 +28,7 @@
         android:scrollbars="vertical"
         android:scrollbarSize="@dimen/px_4"
         android:overScrollMode="never"
-        android:scrollbarTrackVertical="@drawable/scrollbar_track_vertical"
-        android:scrollbarThumbVertical="@drawable/scrollbar_thumb_vertical"/>
+        android:scrollbarTrackVertical="@drawable/tv_scrollbar_track_vertical"
+        android:scrollbarThumbVertical="@drawable/tv_scrollbar_thumb_vertical"/>
 
 </RelativeLayout>

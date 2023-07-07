@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="copyright">Copyright @Luo™ Power by Android</string>
-    <string name="login">登陆</string>
 </resources>

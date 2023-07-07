@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="px_60_negative">-60.0px</dimen>
     <dimen name="px_0">0px</dimen>
     <dimen name="px_1">1.0px</dimen>
     <dimen name="px_2">2.0px</dimen>
@@ -2002,7 +2001,4 @@
     <dimen name="px_1998">1998.0px</dimen>
     <dimen name="px_1999">1999.0px</dimen>
     <dimen name="px_2000">2000.0px</dimen>
-
-    <dimen name="less_px_9">-9.0px</dimen>
-
 </resources>

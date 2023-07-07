@@ -30,7 +30,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.ISplash
 
     @Override
     protected void initLayout() {
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.tv_activity_login);
         tvLogin = findViewById(R.id.tv_login);
         llSettingArea = findViewById(R.id.ll_setting_area);
         initListener();
@@ -55,10 +55,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.ISplash
         });
         llSettingArea.setOnFocusChangeListener((v, hasFocus) -> {
             if(hasFocus){
-                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon_focus);
+                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.tv_setting_icon_focus);
                 ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.black));
             }else{
-                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.setting_icon);
+                ((ImageView)llSettingArea.getChildAt(0)).setImageResource(R.mipmap.tv_setting_icon);
                 ((TextView)llSettingArea.getChildAt(1)).setTextColor(getResources().getColor(R.color.white));
             }
         });

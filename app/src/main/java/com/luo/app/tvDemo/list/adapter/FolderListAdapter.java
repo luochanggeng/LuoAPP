@@ -56,7 +56,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
     @NotNull
     @Override
     public FolderListAdapter.MyViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(mContext).inflate(R.layout.folder_list_item, parent, false);
+        View inflate = LayoutInflater.from(mContext).inflate(R.layout.tv_folder_list_item, parent, false);
         return new MyViewHolder(inflate);
     }
 
@@ -64,7 +64,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull @NotNull FolderListAdapter.MyViewHolder holder, int position) {
         ContentDetail contentDetail = mContentList.get(position);
-        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.default_bg);
+        ImageLoader.loadImage(mContext, contentDetail.getImage(), holder.ivPlaybill, R.mipmap.tv_default_bg);
         holder.tvName.setText(contentDetail.getContentName());
 
         String label = contentDetail.getLabel();

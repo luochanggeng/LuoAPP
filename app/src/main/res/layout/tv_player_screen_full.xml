@@ -32,7 +32,7 @@
         android:layout_width="@dimen/px_180"
         android:layout_height="@dimen/px_180"
         android:layout_centerInParent="true"
-        android:src="@mipmap/full_player_pause_icon"
+        android:src="@mipmap/tv_full_player_pause_icon"
         android:visibility="gone"/>
 
     <LinearLayout
@@ -41,7 +41,7 @@
         android:layout_height="@dimen/px_322"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:background="@mipmap/full_progress_area_bg"
+        android:background="@mipmap/tv_full_progress_area_bg"
         android:visibility="gone">
 
         <RelativeLayout
@@ -78,7 +78,7 @@
                 android:layout_width="@dimen/px_40"
                 android:layout_height="@dimen/px_40"
                 android:layout_alignParentBottom="true"
-                android:src="@mipmap/rewind" />
+                android:src="@mipmap/tv_rewind" />
 
             <SeekBar
                 android:id="@+id/full_progress_seekbar"
@@ -95,7 +95,7 @@
                 android:paddingEnd="@dimen/px_20"
                 android:progressBackgroundTint="@color/white_44"
                 android:progressTint="#E5BF20"
-                android:thumb="@drawable/seekbar_circle" />
+                android:thumb="@drawable/tv_seekbar_circle" />
 
         </RelativeLayout>
     </LinearLayout>
