@@ -2,10 +2,11 @@
 <resources>
     <color name="trans">#00000000</color>
     <color name="black">#FF000000</color>
+    <color name="black_bb">#bb000000</color>
+    <color name="black_44">#44000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_44">#22FFFFFF</color>
     <color name="white_aa">#aaFFFFFF</color>
-    <color name="black_bb">#bb000000</color>
     <color name="yellow">#FFFF00</color>
 
     <color name="tv_small_screen_progress_end">#F4FC37</color>
