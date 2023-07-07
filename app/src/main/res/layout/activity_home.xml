@@ -67,7 +67,7 @@
 
     </LinearLayout>
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder1"
         android:layout_width="@dimen/px_330"
         android:layout_height="@dimen/px_520"
@@ -76,7 +76,7 @@
         android:focusable="true"
         android:scaleType="fitXY" />
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder2"
         android:layout_width="@dimen/px_330"
         android:layout_height="@dimen/px_520"
@@ -95,7 +95,7 @@
         android:focusable="true"
         android:padding="@dimen/px_3">
 
-        <com.luo.app.player.core.LuoPlayerScreen
+        <com.luo.app.tvDemo.player.core.LuoPlayerScreen
             android:id="@+id/luoPlayerScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -111,7 +111,7 @@
 
     </RelativeLayout>
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder3"
         android:layout_width="@dimen/px_384"
         android:layout_height="@dimen/px_214"
@@ -121,7 +121,7 @@
         android:focusable="true"
         android:scaleType="fitXY" />
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder4"
         android:layout_width="@dimen/px_384"
         android:layout_height="@dimen/px_214"
@@ -131,7 +131,7 @@
         android:focusable="true"
         android:scaleType="fitXY" />
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder5"
         android:layout_width="@dimen/px_384"
         android:layout_height="@dimen/px_214"
@@ -141,7 +141,7 @@
         android:focusable="true"
         android:scaleType="fitXY" />
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_folder6"
         android:layout_width="@dimen/px_384"
         android:layout_height="@dimen/px_214"

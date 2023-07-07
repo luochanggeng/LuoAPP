@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/px_170"
         android:orientation="vertical">
 
-        <com.luo.app.widget.CircleImageView
+        <com.luo.app.tvDemo.widget.CircleImageView
             android:layout_width="@dimen/px_300"
             android:layout_height="@dimen/px_300"
             android:layout_gravity="center_horizontal"

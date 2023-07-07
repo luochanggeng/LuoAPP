@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
 
-    <com.luo.app.player.core.LuoPlayerScreen
+    <com.luo.app.tvDemo.player.core.LuoPlayerScreen
         android:id="@+id/luoPlayerScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

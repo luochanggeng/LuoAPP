@@ -14,23 +14,19 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
         android:networkSecurityConfig="@xml/network_security_config">
-
-        <activity android:name=".login.LoginActivity">
+        <!-- App总入口 -->
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".home.HomeActivity"/>
-
-        <activity android:name=".setting.SettingActivity"/>
-
-        <activity android:name=".list.ListActivity"/>
-
-        <activity android:name=".player.FullScreenPlayerActivity"/>
-
+        <!-- Android TV应用, 包含Android TV开发过程中学习到的功能 -->
+        <activity android:name=".tvDemo.login.LoginActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".tvDemo.home.HomeActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".tvDemo.setting.SettingActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".tvDemo.list.ListActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".tvDemo.player.FullScreenPlayerActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

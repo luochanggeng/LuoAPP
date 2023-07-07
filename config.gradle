@@ -1,0 +1,24 @@
+ext {
+    /*defaultConfig value*/
+    COMPILESDKVERSION = 29
+    BUILDTOOLSVERSION = "29.0.2"
+    defaultConfig = [
+            MINSDKVERSION   : 24,
+            TARGETSDKVERSION: 29,
+    ]
+
+    /*compileOptions value*/
+    compileOptions = [
+            SOURCECOMPATIBILITY: JavaVersion.VERSION_1_8,
+            TARGETCOMPATIBILITY: JavaVersion.VERSION_1_8
+    ]
+
+    buildTypes = [
+            MINIFYENABLED  : false, //启用Proguard,启用混淆
+            SHRINKRESOURCES: false, //清理无用资源,依赖于minifyEnabled
+            ZIPALIGNENABLED: false, //启用zipAlign压缩
+            proguardFiles  : 'proguard-android.txt',
+            proguard_rules : 'proguard-rules.pro'
+
+    ]
+}

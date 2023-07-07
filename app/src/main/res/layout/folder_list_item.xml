@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.luo.app.widget.FocusFlashImageView
+    <com.luo.app.tvDemo.widget.FocusFlashImageView
         android:id="@+id/iv_playbill"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px_450"
@@ -30,7 +30,7 @@
         android:padding="@dimen/px_3"
         android:visibility="gone">
 
-        <com.luo.app.widget.MyImageView
+        <com.luo.app.tvDemo.widget.MyImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/item_detail_bg"/>

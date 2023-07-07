@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.COMPILESDKVERSION
+    buildToolsVersion rootProject.ext.BUILDTOOLSVERSION
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.defaultConfig.MINSDKVERSION
+        targetSdkVersion rootProject.ext.defaultConfig.TARGETSDKVERSION
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled rootProject.ext.buildTypes.MINIFYENABLED
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.compileOptions.SOURCECOMPATIBILITY
+        targetCompatibility rootProject.ext.compileOptions.TARGETCOMPATIBILITY
+    }
+}
+
+dependencies {
+    //开启混淆后 okhttp3 会出现异常，无法请求到数据，需要配置proguard-rules,后面再百度吧
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+}

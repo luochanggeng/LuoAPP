@@ -1,4 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//使用config.gradle统一配置，避免出现多module下依赖库版本混乱
+apply from: "config.gradle"
 buildscript {
     // Android studio 引入kotlin插件，第一步指定kotlin插件版本
     ext.kotlin_version = "1.5.31"
